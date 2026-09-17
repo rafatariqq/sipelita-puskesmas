@@ -1,402 +1,614 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import {
-  ArrowRight,
+  Activity,
+  Ambulance,
   Baby,
-  BadgeCheck,
   Building2,
-  ChevronRight,
-  ClipboardList,
-  FlaskConical,
+  CheckCircle2,
+  ClipboardCheck,
+  FileText,
+  HandHelping,
+  Heart,
   HeartPulse,
   Hospital,
+  Microscope,
+  Monitor,
+  Pill,
+  ScanHeart,
   Search,
-  ShieldCheck,
+  ShieldPlus,
   Stethoscope,
   Syringe,
-  Users,
   UserRound,
+  Users,
   X,
 } from "lucide-react";
 
 type ClusterId =
-  | "semua"
-  | "klaster1"
-  | "klaster2"
-  | "klaster3"
-  | "klaster4"
+  | "all"
+  | "cluster1"
+  | "cluster2"
+  | "cluster3"
+  | "cluster4"
   | "lintas";
 
 type Service = {
   id: number;
-  cluster: Exclude<ClusterId, "semua">;
-  clusterNumber: string;
-  clusterName: string;
-  title: string;
+  name: string;
   description: string;
-  icon: React.ElementType;
-  requirements: string[];
+  detail: string;
+  cluster: ClusterId;
+  clusterName: string;
+  icon: any;
 };
 
-const categories = [
-  {
-    id: "semua" as ClusterId,
-    number: "ALL",
-    title: "Semua",
-    description: "Seluruh layanan",
-  },
-  {
-    id: "klaster1" as ClusterId,
-    number: "01",
-    title: "Manajemen",
-    description: "Tata kelola",
-  },
-  {
-    id: "klaster2" as ClusterId,
-    number: "02",
-    title: "Ibu & Anak",
-    description: "Kesehatan keluarga",
-  },
-  {
-    id: "klaster3" as ClusterId,
-    number: "03",
-    title: "Dewasa & Lansia",
-    description: "Usia produktif",
-  },
-  {
-    id: "klaster4" as ClusterId,
-    number: "04",
-    title: "Penyakit Menular",
-    description: "Pencegahan & pengendalian",
-  },
-  {
-    id: "lintas" as ClusterId,
-    number: "05",
-    title: "Lintas Klaster",
-    description: "Layanan pendukung",
-  },
-];
-
 const services: Service[] = [
+  // =====================================================
   // KLASTER 1
+  // =====================================================
   {
     id: 1,
-    cluster: "klaster1",
-    clusterNumber: "KLASTER 01",
-    clusterName: "Manajemen",
-    title: "Administrasi & Informasi",
+    name: "Administrasi",
     description:
-      "Layanan informasi, administrasi, dan kebutuhan umum masyarakat terkait pelayanan Puskesmas.",
-    icon: ClipboardList,
-    requirements: [
-      "Identitas diri",
-      "Data administrasi yang diperlukan",
-    ],
+      "Pelayanan administrasi dan pengelolaan dokumen Puskesmas.",
+    detail:
+      "Pelayanan administrasi meliputi pengelolaan dokumen, informasi administrasi, serta kebutuhan administrasi masyarakat yang berkaitan dengan pelayanan Puskesmas.",
+    cluster: "cluster1",
+    clusterName: "Klaster 1 • Manajemen",
+    icon: FileText,
   },
   {
     id: 2,
-    cluster: "klaster1",
-    clusterNumber: "KLASTER 01",
-    clusterName: "Manajemen",
-    title: "Informasi Pelayanan",
+    name: "Sistem Informasi",
     description:
-      "Informasi mengenai layanan, jadwal, persyaratan, serta berbagai informasi Puskesmas.",
-    icon: Building2,
-    requirements: [
-      "Tidak ada persyaratan khusus",
-      "Menyampaikan kebutuhan informasi",
-    ],
+      "Pengelolaan sistem informasi dan data pelayanan kesehatan.",
+    detail:
+      "Sistem informasi mendukung pengelolaan data dan informasi pelayanan kesehatan sehingga proses pelayanan dapat berjalan secara lebih terintegrasi.",
+    cluster: "cluster1",
+    clusterName: "Klaster 1 • Manajemen",
+    icon: Monitor,
   },
   {
     id: 3,
-    cluster: "klaster1",
-    clusterNumber: "KLASTER 01",
-    clusterName: "Manajemen",
-    title: "Pengaduan & Masukan",
+    name: "Manajemen Mutu",
     description:
-      "Media untuk menyampaikan pengaduan, saran, dan masukan mengenai pelayanan Puskesmas.",
-    icon: ShieldCheck,
-    requirements: [
-      "Uraian pengaduan",
-      "Identitas jika diperlukan",
-    ],
+      "Pengelolaan dan peningkatan mutu pelayanan kesehatan.",
+    detail:
+      "Manajemen mutu berfokus pada pemantauan dan peningkatan kualitas pelayanan agar pelayanan kesehatan dapat diberikan secara aman, efektif, dan berkesinambungan.",
+    cluster: "cluster1",
+    clusterName: "Klaster 1 • Manajemen",
+    icon: ClipboardCheck,
   },
-
-  // KLASTER 2
   {
     id: 4,
-    cluster: "klaster2",
-    clusterNumber: "KLASTER 02",
-    clusterName: "Ibu dan Anak",
-    title: "Kesehatan Ibu",
+    name: "Pengaduan",
     description:
-      "Pelayanan kesehatan bagi ibu sesuai dengan kebutuhan pada masa kehamilan hingga setelah persalinan.",
-    icon: HeartPulse,
-    requirements: [
-      "Kartu identitas",
-      "Buku KIA jika tersedia",
-    ],
+      "Penerimaan dan pengelolaan pengaduan masyarakat.",
+    detail:
+      "Masyarakat dapat menyampaikan pengaduan, saran, maupun masukan mengenai pelayanan Puskesmas untuk menjadi bahan evaluasi dan peningkatan kualitas pelayanan.",
+    cluster: "cluster1",
+    clusterName: "Klaster 1 • Manajemen",
+    icon: HandHelping,
   },
+
+  // =====================================================
+  // KLASTER 2
+  // =====================================================
   {
     id: 5,
-    cluster: "klaster2",
-    clusterNumber: "KLASTER 02",
-    clusterName: "Ibu dan Anak",
-    title: "Kesehatan Bayi & Balita",
+    name: "Ibu Hamil",
     description:
-      "Pelayanan kesehatan bayi dan balita termasuk pemantauan pertumbuhan dan perkembangan.",
-    icon: Baby,
-    requirements: [
-      "Identitas anak/orang tua",
-      "Buku KIA jika tersedia",
-    ],
+      "Pelayanan pemeriksaan dan pemantauan kesehatan ibu selama kehamilan.",
+    detail:
+      "Pelayanan ibu hamil meliputi pemeriksaan kehamilan, pemantauan kondisi ibu dan janin, edukasi kesehatan, serta pelayanan sesuai kebutuhan dan ketentuan yang berlaku.",
+    cluster: "cluster2",
+    clusterName: "Klaster 2 • Ibu dan Anak",
+    icon: HeartPulse,
   },
   {
     id: 6,
-    cluster: "klaster2",
-    clusterNumber: "KLASTER 02",
-    clusterName: "Ibu dan Anak",
-    title: "Imunisasi",
+    name: "Bayi & Balita",
     description:
-      "Pelayanan imunisasi sesuai dengan program dan jadwal yang berlaku.",
-    icon: Syringe,
-    requirements: [
-      "Buku KIA atau catatan imunisasi",
-      "Kartu identitas",
-    ],
+      "Pemantauan kesehatan dan tumbuh kembang bayi serta balita.",
+    detail:
+      "Pelayanan bayi dan balita mencakup pemantauan pertumbuhan dan perkembangan, pemeriksaan kesehatan, imunisasi sesuai jadwal, serta edukasi kepada orang tua.",
+    cluster: "cluster2",
+    clusterName: "Klaster 2 • Ibu dan Anak",
+    icon: Baby,
   },
   {
     id: 7,
-    cluster: "klaster2",
-    clusterNumber: "KLASTER 02",
-    clusterName: "Ibu dan Anak",
-    title: "Kesehatan Anak & Remaja",
+    name: "Anak & Remaja",
     description:
-      "Pelayanan kesehatan untuk anak usia sekolah dan remaja sesuai kebutuhan.",
+      "Pelayanan kesehatan bagi anak dan kelompok usia remaja.",
+    detail:
+      "Pelayanan anak dan remaja mendukung pemantauan kesehatan, pertumbuhan, perkembangan, edukasi kesehatan, dan kebutuhan kesehatan sesuai kelompok usia.",
+    cluster: "cluster2",
+    clusterName: "Klaster 2 • Ibu dan Anak",
     icon: Users,
-    requirements: [
-      "Kartu identitas",
-      "Kartu pelajar jika diperlukan",
-    ],
   },
-
-  // KLASTER 3
   {
     id: 8,
-    cluster: "klaster3",
-    clusterNumber: "KLASTER 03",
-    clusterName: "Usia Dewasa & Lansia",
-    title: "Kesehatan Dewasa",
+    name: "Kesehatan Reproduksi",
     description:
-      "Pelayanan kesehatan bagi masyarakat usia dewasa dan usia produktif.",
-    icon: Stethoscope,
-    requirements: [
-      "Kartu identitas",
-      "Kartu JKN jika tersedia",
-    ],
+      "Pelayanan dan edukasi mengenai kesehatan reproduksi.",
+    detail:
+      "Pelayanan kesehatan reproduksi memberikan informasi, edukasi, pemeriksaan, dan dukungan kesehatan reproduksi sesuai kebutuhan masyarakat.",
+    cluster: "cluster2",
+    clusterName: "Klaster 2 • Ibu dan Anak",
+    icon: Heart,
   },
+
+  // =====================================================
+  // KLASTER 3
+  // =====================================================
   {
     id: 9,
-    cluster: "klaster3",
-    clusterNumber: "KLASTER 03",
-    clusterName: "Usia Dewasa & Lansia",
-    title: "Kesehatan Lansia",
+    name: "Usia Produktif",
     description:
-      "Pelayanan kesehatan bagi masyarakat lanjut usia sesuai kebutuhan kesehatan.",
+      "Pelayanan kesehatan bagi masyarakat usia dewasa dan produktif.",
+    detail:
+      "Pelayanan usia produktif membantu masyarakat menjaga dan memantau kondisi kesehatan melalui pemeriksaan serta edukasi mengenai pola hidup sehat.",
+    cluster: "cluster3",
+    clusterName: "Klaster 3 • Usia Dewasa dan Lansia",
     icon: UserRound,
-    requirements: [
-      "Kartu identitas",
-      "Dokumen kesehatan jika ada",
-    ],
   },
   {
     id: 10,
-    cluster: "klaster3",
-    clusterNumber: "KLASTER 03",
-    clusterName: "Usia Dewasa & Lansia",
-    title: "Skrining Kesehatan",
+    name: "Skrining PTM",
     description:
-      "Pemeriksaan dan skrining untuk membantu mengenali faktor risiko kesehatan.",
-    icon: HeartPulse,
-    requirements: [
-      "Kartu identitas",
-      "Mengikuti prosedur pemeriksaan",
-    ],
+      "Skrining dan deteksi dini penyakit tidak menular.",
+    detail:
+      "Skrining penyakit tidak menular dilakukan untuk membantu mendeteksi faktor risiko dan kondisi kesehatan tertentu sejak dini.",
+    cluster: "cluster3",
+    clusterName: "Klaster 3 • Usia Dewasa dan Lansia",
+    icon: ScanHeart,
   },
-
-  // KLASTER 4
   {
     id: 11,
-    cluster: "klaster4",
-    clusterNumber: "KLASTER 04",
-    clusterName: "Penyakit Menular",
-    title: "Pencegahan & Pengendalian",
+    name: "Lansia",
     description:
-      "Kegiatan pencegahan dan pengendalian penyakit menular di wilayah kerja Puskesmas.",
-    icon: ShieldCheck,
-    requirements: [
-      "Kartu identitas",
-      "Informasi kondisi atau keluhan",
-    ],
+      "Pelayanan kesehatan dan pemantauan kesehatan lanjut usia.",
+    detail:
+      "Pelayanan lansia mendukung pemantauan kondisi kesehatan, deteksi dini masalah kesehatan, edukasi, dan pelayanan sesuai kebutuhan lanjut usia.",
+    cluster: "cluster3",
+    clusterName: "Klaster 3 • Usia Dewasa dan Lansia",
+    icon: Users,
   },
   {
     id: 12,
-    cluster: "klaster4",
-    clusterNumber: "KLASTER 04",
-    clusterName: "Penyakit Menular",
-    title: "Surveilans Penyakit",
+    name: "Pemeriksaan Kesehatan",
     description:
-      "Pemantauan dan pelaporan situasi penyakit menular sebagai bagian dari kegiatan kesehatan masyarakat.",
-    icon: ClipboardList,
-    requirements: [
-      "Informasi kejadian",
-      "Data pendukung jika diperlukan",
-    ],
-  },
-  {
-    id: 13,
-    cluster: "klaster4",
-    clusterNumber: "KLASTER 04",
-    clusterName: "Penyakit Menular",
-    title: "Kesehatan Lingkungan",
-    description:
-      "Kegiatan yang berkaitan dengan kondisi lingkungan untuk mendukung kesehatan masyarakat.",
-    icon: Building2,
-    requirements: [
-      "Informasi lokasi",
-      "Data pendukung jika diperlukan",
-    ],
+      "Pemeriksaan kesehatan umum dan deteksi dini gangguan kesehatan.",
+    detail:
+      "Pemeriksaan kesehatan membantu mengetahui kondisi kesehatan masyarakat dan mendukung deteksi dini terhadap berbagai masalah kesehatan.",
+    cluster: "cluster3",
+    clusterName: "Klaster 3 • Usia Dewasa dan Lansia",
+    icon: Stethoscope,
   },
 
-  // LINTAS KLASTER
+  // =====================================================
+  // KLASTER 4
+  // =====================================================
+  {
+    id: 13,
+    name: "Surveilans",
+    description:
+      "Pemantauan dan pengumpulan data penyakit di masyarakat.",
+    detail:
+      "Surveilans kesehatan digunakan untuk melakukan pemantauan terhadap kejadian penyakit dan kondisi kesehatan masyarakat sebagai bagian dari upaya pengendalian penyakit.",
+    cluster: "cluster4",
+    clusterName: "Klaster 4 • Penanggulangan Penyakit Menular",
+    icon: Activity,
+  },
   {
     id: 14,
-    cluster: "lintas",
-    clusterNumber: "LINTAS KLASTER",
-    clusterName: "Pelayanan Pendukung",
-    title: "Kegawatdaruratan",
+    name: "Pengendalian Penyakit",
     description:
-      "Pelayanan untuk kondisi yang membutuhkan penanganan kegawatdaruratan sesuai kemampuan Puskesmas.",
-    icon: Hospital,
-    requirements: [
-      "Segera melapor kepada petugas",
-      "Identitas jika tersedia",
-    ],
+      "Upaya pencegahan dan pengendalian penyakit menular.",
+    detail:
+      "Pelayanan pengendalian penyakit menular mencakup kegiatan pencegahan, pemantauan, penanganan, dan pengendalian sesuai dengan program kesehatan yang tersedia.",
+    cluster: "cluster4",
+    clusterName: "Klaster 4 • Penanggulangan Penyakit Menular",
+    icon: ShieldPlus,
   },
   {
     id: 15,
-    cluster: "lintas",
-    clusterNumber: "LINTAS KLASTER",
-    clusterName: "Pelayanan Pendukung",
-    title: "Laboratorium",
+    name: "Kesehatan Lingkungan",
     description:
-      "Pelayanan pemeriksaan laboratorium sesuai dengan jenis pemeriksaan yang tersedia.",
-    icon: FlaskConical,
-    requirements: [
-      "Kartu identitas",
-      "Permintaan pemeriksaan",
-    ],
+      "Pemantauan faktor lingkungan yang berpengaruh terhadap kesehatan.",
+    detail:
+      "Pelayanan kesehatan lingkungan mendukung upaya menjaga lingkungan yang sehat melalui pemantauan faktor lingkungan yang dapat memengaruhi kesehatan masyarakat.",
+    cluster: "cluster4",
+    clusterName: "Klaster 4 • Penanggulangan Penyakit Menular",
+    icon: Building2,
   },
   {
     id: 16,
-    cluster: "lintas",
-    clusterNumber: "LINTAS KLASTER",
-    clusterName: "Pelayanan Pendukung",
-    title: "Kefarmasian",
+    name: "Pencegahan Penyakit",
     description:
-      "Pelayanan kefarmasian untuk mendukung kebutuhan pengobatan sesuai ketentuan.",
-    icon: BadgeCheck,
-    requirements: [
-      "Resep atau dokumen pelayanan",
-      "Kartu identitas jika diperlukan",
-    ],
+      "Edukasi dan kegiatan pencegahan untuk menjaga kesehatan masyarakat.",
+    detail:
+      "Kegiatan pencegahan penyakit bertujuan meningkatkan kesadaran masyarakat terhadap faktor risiko dan langkah-langkah menjaga kesehatan.",
+    cluster: "cluster4",
+    clusterName: "Klaster 4 • Penanggulangan Penyakit Menular",
+    icon: Syringe,
   },
+
+  // =====================================================
+  // LINTAS KLASTER
+  // =====================================================
   {
     id: 17,
-    cluster: "lintas",
-    clusterNumber: "LINTAS KLASTER",
-    clusterName: "Pelayanan Pendukung",
-    title: "Gigi & Mulut",
+    name: "Kegawatdaruratan",
     description:
-      "Pelayanan kesehatan gigi dan mulut sesuai jenis pelayanan yang tersedia.",
-    icon: Stethoscope,
-    requirements: [
-      "Kartu identitas",
-      "Kartu JKN jika tersedia",
-    ],
+      "Pelayanan awal dan penanganan kondisi kegawatdaruratan.",
+    detail:
+      "Pelayanan kegawatdaruratan memberikan penanganan awal terhadap kondisi yang membutuhkan tindakan segera sesuai kemampuan dan fasilitas Puskesmas.",
+    cluster: "lintas",
+    clusterName: "Lintas Klaster • Layanan Pendukung",
+    icon: Ambulance,
+  },
+  {
+    id: 18,
+    name: "Laboratorium",
+    description:
+      "Pemeriksaan laboratorium untuk mendukung pelayanan kesehatan.",
+    detail:
+      "Pelayanan laboratorium menyediakan pemeriksaan penunjang sesuai jenis pemeriksaan yang tersedia di Puskesmas untuk membantu proses pelayanan kesehatan.",
+    cluster: "lintas",
+    clusterName: "Lintas Klaster • Layanan Pendukung",
+    icon: Microscope,
+  },
+  {
+    id: 19,
+    name: "Kefarmasian",
+    description:
+      "Pelayanan obat dan informasi penggunaan obat.",
+    detail:
+      "Pelayanan kefarmasian meliputi pengelolaan dan pelayanan obat serta pemberian informasi penggunaan obat sesuai kebutuhan pelayanan kesehatan.",
+    cluster: "lintas",
+    clusterName: "Lintas Klaster • Layanan Pendukung",
+    icon: Pill,
+  },
+  {
+    id: 20,
+    name: "Layanan Pendukung",
+    description:
+      "Pelayanan pendukung untuk menunjang pelayanan kesehatan.",
+    detail:
+      "Layanan pendukung membantu memastikan berbagai kebutuhan pelayanan kesehatan dapat berjalan secara terintegrasi dan sesuai dengan kebutuhan masyarakat.",
+    cluster: "lintas",
+    clusterName: "Lintas Klaster • Layanan Pendukung",
+    icon: Hospital,
   },
 ];
 
-export default function LayananPage() {
-  const [activeCategory, setActiveCategory] =
-    useState<ClusterId>("semua");
+const filters: {
+  id: ClusterId;
+  label: string;
+}[] = [
+  {
+    id: "all",
+    label: "Semua",
+  },
+  {
+    id: "cluster1",
+    label: "Klaster 1",
+  },
+  {
+    id: "cluster2",
+    label: "Klaster 2",
+  },
+  {
+    id: "cluster3",
+    label: "Klaster 3",
+  },
+  {
+    id: "cluster4",
+    label: "Klaster 4",
+  },
+  {
+    id: "lintas",
+    label: "Lintas Klaster",
+  },
+];
 
-  const [searchQuery, setSearchQuery] = useState("");
+const clusterColors: Record<
+  ClusterId,
+  {
+    icon: string;
+    iconBg: string;
+    badge: string;
+  }
+> = {
+  all: {
+    icon: "text-emerald-700",
+    iconBg: "bg-emerald-50",
+    badge: "bg-emerald-50 text-emerald-700",
+  },
+  cluster1: {
+    icon: "text-blue-600",
+    iconBg: "bg-blue-50",
+    badge: "bg-blue-50 text-blue-700",
+  },
+  cluster2: {
+    icon: "text-pink-600",
+    iconBg: "bg-pink-50",
+    badge: "bg-pink-50 text-pink-700",
+  },
+  cluster3: {
+    icon: "text-red-600",
+    iconBg: "bg-red-50",
+    badge: "bg-red-50 text-red-700",
+  },
+  cluster4: {
+    icon: "text-green-600",
+    iconBg: "bg-green-50",
+    badge: "bg-green-50 text-green-700",
+  },
+  lintas: {
+    icon: "text-purple-600",
+    iconBg: "bg-purple-50",
+    badge: "bg-purple-50 text-purple-700",
+  },
+};
+
+export default function LayananPage() {
+  const [activeFilter, setActiveFilter] = useState<ClusterId>("all");
+  const [search, setSearch] = useState("");
+  const [selectedService, setSelectedService] = useState<Service | null>(
+    null
+  );
 
   const filteredServices = useMemo(() => {
-    const keyword = searchQuery.toLowerCase().trim();
+    const keyword = search.trim().toLowerCase();
 
     return services.filter((service) => {
-      const categoryMatch =
-        activeCategory === "semua" ||
-        service.cluster === activeCategory;
+      const matchCluster =
+        activeFilter === "all" || service.cluster === activeFilter;
 
-      const searchMatch =
-        !keyword ||
-        service.title.toLowerCase().includes(keyword) ||
+      const matchSearch =
+        keyword === "" ||
+        service.name.toLowerCase().includes(keyword) ||
         service.description.toLowerCase().includes(keyword) ||
-        service.clusterName.toLowerCase().includes(keyword) ||
-        service.clusterNumber.toLowerCase().includes(keyword);
+        service.clusterName.toLowerCase().includes(keyword);
 
-      return categoryMatch && searchMatch;
+      return matchCluster && matchSearch;
     });
-  }, [activeCategory, searchQuery]);
+  }, [activeFilter, search]);
 
   return (
-    <main className="min-h-screen bg-[#f6faf8] text-slate-800">
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-white">
-        <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-emerald-100/60 blur-3xl" />
-        <div className="absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-teal-100/50 blur-3xl" />
-
-        <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-10 lg:px-8 lg:pb-20 lg:pt-14">
-          <Link
-            href="/"
-            className="mb-10 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-emerald-600"
-          >
-            <ArrowRight className="rotate-180" size={16} />
-            Kembali ke Beranda
-          </Link>
-
-          <div className="grid items-center gap-10 lg:grid-cols-[1fr_300px]">
+    <main className="min-h-screen bg-[#f7faf9]">
+      {/* =====================================================
+          HEADER / HERO
+      ====================================================== */}
+      <section className="bg-[#f7faf9]">
+        <div className="mx-auto max-w-7xl px-5 pb-8 pt-14 sm:px-6 lg:px-8 lg:pb-10 lg:pt-16">
+          <div className="grid items-end gap-8 lg:grid-cols-2">
+            {/* LEFT */}
             <div>
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-emerald-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-emerald-700">
-                <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                Integrasi Pelayanan Kesehatan Primer
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3.5 py-2 text-sm font-semibold text-emerald-700">
+                <Stethoscope className="h-4 w-4" />
+                Pelayanan Kesehatan
               </div>
 
-              <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-                Layanan Kesehatan
-                <span className="block text-emerald-600">
-                  Puskesmas Tarailu Sampaga
-                </span>
+              <h1 className="max-w-xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                Layanan yang Anda butuhkan.
               </h1>
-
-              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-500 sm:text-lg">
-                Temukan berbagai informasi pelayanan kesehatan
-                berdasarkan klaster Integrasi Pelayanan Kesehatan
-                Primer (ILP).
-              </p>
             </div>
 
-            <div className="hidden lg:flex lg:justify-end">
-              <div className="relative flex h-64 w-64 items-center justify-center rounded-[2rem] border border-emerald-100 bg-gradient-to-br from-emerald-50 to-teal-50 shadow-sm">
-                <div className="absolute h-40 w-40 rounded-full bg-white shadow-sm" />
+            {/* RIGHT */}
+            <div className="lg:pb-1">
+              <p className="max-w-xl text-sm leading-7 text-slate-500 sm:text-base">
+                Pilih layanan berdasarkan klaster untuk mendapatkan informasi
+                mengenai pelayanan kesehatan yang tersedia di Puskesmas
+                Tarailu Sampaga.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <div className="relative flex h-24 w-24 items-center justify-center rounded-3xl bg-emerald-600 text-white shadow-xl shadow-emerald-600/20">
-                  <HeartPulse size={48} strokeWidth={1.7} />
+      {/* =====================================================
+          FILTER + SEARCH
+      ====================================================== */}
+      <section className="bg-[#f7faf9]">
+        <div className="mx-auto max-w-7xl px-5 pb-7 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            {/* FILTER */}
+            <div className="flex gap-2 overflow-x-auto pb-1">
+              {filters.map((filter) => {
+                const active = activeFilter === filter.id;
+
+                return (
+                  <button
+                    key={filter.id}
+                    type="button"
+                    onClick={() => setActiveFilter(filter.id)}
+                    className={`whitespace-nowrap rounded-full px-4 py-2.5 text-sm font-semibold transition-all duration-200 ${
+                      active
+                        ? "bg-emerald-700 text-white shadow-sm"
+                        : "border border-slate-200 bg-white text-slate-600 hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700"
+                    }`}
+                  >
+                    {filter.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* SEARCH */}
+            <div className="relative w-full lg:max-w-xs">
+              <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Cari layanan..."
+                className="h-11 w-full rounded-full border border-slate-200 bg-white pl-11 pr-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-50"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
+          SERVICE GRID
+      ====================================================== */}
+      <section className="bg-[#f7faf9]">
+        <div className="mx-auto max-w-7xl px-5 pb-16 sm:px-6 lg:px-8">
+          {/* RESULT INFO */}
+          <div className="mb-5 flex items-center justify-between">
+            <p className="text-sm text-slate-500">
+              Menampilkan{" "}
+              <span className="font-semibold text-slate-700">
+                {filteredServices.length}
+              </span>{" "}
+              layanan
+            </p>
+
+            {(search || activeFilter !== "all") && (
+              <button
+                type="button"
+                onClick={() => {
+                  setSearch("");
+                  setActiveFilter("all");
+                }}
+                className="text-sm font-semibold text-emerald-700 hover:text-emerald-800"
+              >
+                Reset filter
+              </button>
+            )}
+          </div>
+
+          {/* CARDS */}
+          {filteredServices.length > 0 ? (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {filteredServices.map((service) => {
+                const ServiceIcon = service.icon;
+                const colors = clusterColors[service.cluster];
+
+                return (
+                  <article
+                    key={service.id}
+                    className="group flex min-h-[270px] flex-col rounded-[22px] border border-slate-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-100 hover:shadow-[0_18px_45px_rgba(15,23,42,0.08)]"
+                  >
+                    {/* ICON */}
+                    <div
+                      className={`flex h-14 w-14 items-center justify-center rounded-2xl ${colors.iconBg}`}
+                    >
+                      <ServiceIcon
+                        className={`h-7 w-7 ${colors.icon}`}
+                        strokeWidth={1.8}
+                      />
+                    </div>
+
+                    {/* TITLE */}
+                    <div className="mt-6">
+                      <h2 className="text-lg font-bold text-slate-900">
+                        {service.name}
+                      </h2>
+
+                      <p className="mt-2 line-clamp-3 text-sm leading-6 text-slate-500">
+                        {service.description}
+                      </p>
+                    </div>
+
+                    {/* FOOTER */}
+                    <div className="mt-auto pt-6">
+                      <div className="mb-4">
+                        <span
+                          className={`inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold ${colors.badge}`}
+                        >
+                          {service.clusterName}
+                        </span>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => setSelectedService(service)}
+                        className="inline-flex items-center gap-2 text-sm font-bold text-emerald-700 transition-all group-hover:gap-3 hover:text-emerald-800"
+                      >
+                        Lihat detail
+                        <span className="text-lg leading-none">→</span>
+                      </button>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          ) : (
+            /* EMPTY STATE */
+            <div className="rounded-[24px] border border-slate-200 bg-white px-6 py-16 text-center">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-slate-100">
+                <Search className="h-7 w-7 text-slate-400" />
+              </div>
+
+              <h2 className="mt-5 text-xl font-bold text-slate-900">
+                Layanan tidak ditemukan
+              </h2>
+
+              <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
+                Tidak ada layanan yang sesuai dengan pencarian atau filter
+                yang dipilih.
+              </p>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setSearch("");
+                  setActiveFilter("all");
+                }}
+                className="mt-6 rounded-full bg-emerald-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-800"
+              >
+                Tampilkan Semua
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* =====================================================
+          INFORMATION BANNER
+      ====================================================== */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-5 py-12 sm:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-[26px] bg-emerald-700 px-6 py-8 sm:px-10 sm:py-10">
+            <div className="flex flex-col gap-7 md:flex-row md:items-center md:justify-between">
+              <div className="max-w-2xl">
+                <div className="flex items-center gap-2 text-sm font-semibold text-emerald-100">
+                  <HeartPulse className="h-5 w-5" />
+                  Integrasi Layanan Primer
+                </div>
+
+                <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl">
+                  Pelayanan kesehatan untuk masyarakat
+                </h2>
+
+                <p className="mt-3 text-sm leading-6 text-emerald-100 sm:text-base">
+                  Puskesmas menyediakan berbagai layanan kesehatan yang
+                  terintegrasi untuk mendukung kebutuhan masyarakat di setiap
+                  kelompok usia.
+                </p>
+              </div>
+
+              <div className="flex shrink-0 items-center gap-3">
+                <div className="rounded-2xl bg-white/10 px-5 py-4 text-center backdrop-blur-sm">
+                  <p className="text-3xl font-bold text-white">5</p>
+                  <p className="mt-1 text-xs text-emerald-100">
+                    Kelompok Layanan
+                  </p>
+                </div>
+
+                <div className="rounded-2xl bg-white/10 px-5 py-4 text-center backdrop-blur-sm">
+                  <p className="text-3xl font-bold text-white">20</p>
+                  <p className="mt-1 text-xs text-emerald-100">
+                    Jenis Layanan
+                  </p>
                 </div>
               </div>
             </div>
@@ -404,297 +616,93 @@ export default function LayananPage() {
         </div>
       </section>
 
-      {/* CONTENT */}
-      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-16">
-        {/* TITLE */}
-        <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-          <div>
-            <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-emerald-600">
-              Daftar Pelayanan
-            </p>
-
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900">
-              Pilih layanan yang kamu butuhkan
-            </h2>
-
-            <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
-              Gunakan kategori ILP atau pencarian untuk menemukan
-              layanan dengan lebih cepat.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-3 shadow-sm">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
-              <Stethoscope size={20} />
-            </div>
-
-            <div>
-              <p className="text-2xl font-bold leading-none text-slate-900">
-                {filteredServices.length}
-              </p>
-              <p className="mt-1 text-xs text-slate-500">
-                layanan tersedia
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* SEARCH */}
-        <div className="mb-7 rounded-2xl border border-slate-200 bg-white p-2 shadow-sm">
-          <div className="flex items-center gap-3 px-3">
-            <Search size={21} className="text-slate-400" />
-
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Cari layanan, misalnya imunisasi, laboratorium..."
-              className="h-12 min-w-0 flex-1 bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
-            />
-
-            {searchQuery && (
+      {/* =====================================================
+          DETAIL MODAL
+      ====================================================== */}
+      {selectedService && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/50 p-4 backdrop-blur-sm"
+          onClick={() => setSelectedService(null)}
+        >
+          <div
+            className="relative w-full max-w-lg overflow-hidden rounded-[26px] bg-white shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* MODAL HEADER */}
+            <div className="border-b border-slate-100 px-6 pb-5 pt-6 sm:px-7">
               <button
                 type="button"
-                onClick={() => setSearchQuery("")}
-                className="flex h-9 w-9 items-center justify-center rounded-xl text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+                onClick={() => setSelectedService(null)}
+                className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition hover:bg-slate-200 hover:text-slate-700"
+                aria-label="Tutup"
               >
-                <X size={18} />
+                <X className="h-4 w-4" />
               </button>
-            )}
-          </div>
-        </div>
 
-        {/* CATEGORY */}
-        <div className="mb-10 overflow-x-auto pb-2">
-          <div className="flex min-w-max gap-3">
-            {categories.map((category) => {
-              const active = activeCategory === category.id;
-
-              const count =
-                category.id === "semua"
-                  ? services.length
-                  : services.filter(
-                      (item) => item.cluster === category.id
-                    ).length;
-
-              return (
-                <button
-                  key={category.id}
-                  type="button"
-                  onClick={() =>
-                    setActiveCategory(category.id)
-                  }
-                  className={`group flex min-w-[150px] items-center gap-3 rounded-2xl border px-4 py-3 text-left transition-all duration-200 ${
-                    active
-                      ? "border-emerald-600 bg-emerald-600 text-white shadow-lg shadow-emerald-600/15"
-                      : "border-slate-200 bg-white text-slate-700 hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-md"
+              <div className="flex items-start gap-4 pr-8">
+                <div
+                  className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${
+                    clusterColors[selectedService.cluster].iconBg
                   }`}
                 >
-                  <div
-                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-xs font-bold ${
-                      active
-                        ? "bg-white/15 text-white"
-                        : "bg-slate-100 text-slate-500 group-hover:bg-emerald-50 group-hover:text-emerald-600"
+                  <selectedService.icon
+                    className={`h-7 w-7 ${
+                      clusterColors[selectedService.cluster].icon
+                    }`}
+                    strokeWidth={1.8}
+                  />
+                </div>
+
+                <div>
+                  <span
+                    className={`inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold ${
+                      clusterColors[selectedService.cluster].badge
                     }`}
                   >
-                    {category.number}
-                  </div>
+                    {selectedService.clusterName}
+                  </span>
+
+                  <h2 className="mt-2 text-2xl font-bold text-slate-900">
+                    {selectedService.name}
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            {/* MODAL CONTENT */}
+            <div className="px-6 py-6 sm:px-7">
+              <p className="text-sm leading-7 text-slate-600">
+                {selectedService.detail}
+              </p>
+
+              <div className="mt-6 rounded-2xl bg-emerald-50 p-4">
+                <div className="flex gap-3">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-700" />
 
                   <div>
-                    <p className="text-sm font-bold">
-                      {category.title}
+                    <p className="text-sm font-semibold text-emerald-900">
+                      Informasi pelayanan
                     </p>
 
-                    <p
-                      className={`mt-0.5 text-[11px] ${
-                        active
-                          ? "text-emerald-50"
-                          : "text-slate-400"
-                      }`}
-                    >
-                      {count} layanan
+                    <p className="mt-1 text-xs leading-5 text-emerald-700">
+                      Untuk informasi lebih lanjut mengenai jadwal dan
+                      ketentuan pelayanan, silakan menghubungi Puskesmas.
                     </p>
                   </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* RESULT INFO */}
-        <div className="mb-6 flex items-center justify-between">
-          <div>
-            <h3 className="font-bold text-slate-900">
-              {categories.find(
-                (item) => item.id === activeCategory
-              )?.title}
-            </h3>
-
-            <p className="mt-1 text-sm text-slate-400">
-              Menampilkan {filteredServices.length} layanan
-            </p>
-          </div>
-
-          {activeCategory !== "semua" && (
-            <button
-              type="button"
-              onClick={() => setActiveCategory("semua")}
-              className="text-sm font-semibold text-emerald-600 hover:text-emerald-700"
-            >
-              Lihat semua
-            </button>
-          )}
-        </div>
-
-        {/* SERVICE GRID */}
-        {filteredServices.length > 0 ? (
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {filteredServices.map((service) => {
-              const Icon = service.icon;
-
-              return (
-                <article
-                  key={service.id}
-                  className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-slate-200/60"
-                >
-                  {/* TOP */}
-                  <div className="flex items-start justify-between p-6 pb-4">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 transition-all duration-300 group-hover:bg-emerald-600 group-hover:text-white">
-                      <Icon size={27} strokeWidth={1.7} />
-                    </div>
-
-                    <span className="rounded-full bg-slate-50 px-3 py-1.5 text-[10px] font-bold tracking-wider text-slate-400">
-                      {service.clusterNumber}
-                    </span>
-                  </div>
-
-                  {/* BODY */}
-                  <div className="flex flex-1 flex-col px-6 pb-5">
-                    <p className="mb-2 text-xs font-semibold text-emerald-600">
-                      {service.clusterName}
-                    </p>
-
-                    <h3 className="text-xl font-bold leading-snug text-slate-900">
-                      {service.title}
-                    </h3>
-
-                    <p className="mt-3 text-sm leading-6 text-slate-500">
-                      {service.description}
-                    </p>
-
-                    {/* REQUIREMENT */}
-                    <div className="mt-6 rounded-2xl bg-slate-50 p-4">
-                      <div className="mb-3 flex items-center gap-2">
-                        <BadgeCheck
-                          size={17}
-                          className="text-emerald-600"
-                        />
-
-                        <span className="text-xs font-bold text-slate-700">
-                          Persyaratan umum
-                        </span>
-                      </div>
-
-                      <ul className="space-y-2">
-                        {service.requirements.map(
-                          (requirement, index) => (
-                            <li
-                              key={index}
-                              className="flex items-start gap-2 text-xs leading-5 text-slate-500"
-                            >
-                              <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-[9px] font-bold text-emerald-600">
-                                ✓
-                              </span>
-
-                              {requirement}
-                            </li>
-                          )
-                        )}
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* FOOTER */}
-                  <div className="border-t border-slate-100 px-6 py-4">
-                    <Link
-                      href="/persyaratan"
-                      className="flex items-center justify-between text-sm font-semibold text-slate-600 transition group-hover:text-emerald-600"
-                    >
-                      <span>
-                        Lihat persyaratan lengkap
-                      </span>
-
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 transition group-hover:bg-emerald-50">
-                        <ChevronRight size={17} />
-                      </span>
-                    </Link>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        ) : (
-          /* EMPTY */
-          <div className="rounded-[2rem] border border-dashed border-slate-300 bg-white px-6 py-20 text-center">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100 text-slate-400">
-              <Search size={28} />
-            </div>
-
-            <h3 className="mt-5 text-xl font-bold text-slate-900">
-              Layanan tidak ditemukan
-            </h3>
-
-            <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
-              Coba gunakan kata pencarian lain atau pilih
-              kategori layanan yang berbeda.
-            </p>
-
-            <button
-              type="button"
-              onClick={() => {
-                setSearchQuery("");
-                setActiveCategory("semua");
-              }}
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/20 transition hover:bg-emerald-700"
-            >
-              Tampilkan semua layanan
-              <ArrowRight size={16} />
-            </button>
-          </div>
-        )}
-
-        {/* BOTTOM CTA */}
-        <div className="mt-12 overflow-hidden rounded-[2rem] bg-slate-900">
-          <div className="relative px-7 py-9 sm:px-10 lg:px-12">
-            <div className="absolute -right-20 -top-24 h-64 w-64 rounded-full bg-emerald-500/20 blur-3xl" />
-
-            <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-400">
-                  Butuh informasi lebih lanjut?
-                </p>
-
-                <h3 className="mt-2 text-2xl font-bold text-white">
-                  Hubungi Puskesmas Tarailu Sampaga
-                </h3>
-
-                <p className="mt-2 max-w-xl text-sm leading-6 text-slate-400">
-                  Dapatkan informasi mengenai jadwal, persyaratan,
-                  dan layanan yang tersedia.
-                </p>
+                </div>
               </div>
 
-              <Link
-                href="/kontak"
-                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-400"
+              <button
+                type="button"
+                onClick={() => setSelectedService(null)}
+                className="mt-6 w-full rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-800"
               >
-                Hubungi Kami
-                <ArrowRight size={17} />
-              </Link>
+                Tutup
+              </button>
             </div>
           </div>
         </div>
-      </section>
+      )}
     </main>
   );
 }
