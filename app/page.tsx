@@ -96,9 +96,9 @@ export default function Home() {
 
         <nav>
           <Link href="/">Beranda</Link>
-          <Link href="#profil">Profil</Link>
-          <Link href="#layanan">Layanan</Link>
-          <Link href="#persyaratan">Persyaratan</Link>
+          <Link href="/profil">Profil</Link>
+          <Link href="/layanan">Layanan</Link>
+          <Link href="/persyaratan">Persyaratan</Link>
           <Link href="#jadwal">Jadwal</Link>
           <Link href="#informasi">Informasi</Link>
         </nav>
