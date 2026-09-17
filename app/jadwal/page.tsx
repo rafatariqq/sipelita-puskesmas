@@ -1,0 +1,3 @@
+import Link from "next/link";
+const rows=[["Senin","Poli Umum","08.00–12.00"],["Selasa","Poli Gigi","08.00–12.00"],["Rabu","Poli Umum","08.00–12.00"],["Kamis","KIA","08.00–12.00"],["Jumat","Poli Umum","08.00–11.00"]];
+export default function Jadwal(){return <main><header className="simpleHead"><Link href="/">← SIPELITA</Link><span>Jadwal Pelayanan</span></header><section className="contentPage"><span className="eyebrow">JADWAL</span><h1>Jadwal pelayanan</h1><p>Contoh data untuk prototype. Jadwal operasional dapat dikelola admin.</p><div className="table"><div className="tr th"><b>Hari</b><b>Poli</b><b>Jam</b></div>{rows.map(r=><div className="tr" key={r[0]}><span>{r[0]}</span><span>{r[1]}</span><span>{r[2]}</span></div>)}</div></section></main>}

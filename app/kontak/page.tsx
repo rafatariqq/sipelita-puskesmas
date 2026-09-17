@@ -1,0 +1,2 @@
+import Link from "next/link"; import {MapPin,Phone,Clock3} from "lucide-react";
+export default function Kontak(){return <main><header className="simpleHead"><Link href="/">← SIPELITA</Link><span>Kontak</span></header><section className="contentPage"><span className="eyebrow">KONTAK</span><h1>Hubungi Puskesmas</h1><div className="contactGrid"><div><MapPin/><h3>Alamat</h3><p>Jl. Contoh No. 10, Indonesia</p></div><div><Phone/><h3>Telepon</h3><p>08xx-xxxx-xxxx</p></div><div><Clock3/><h3>Jam pelayanan</h3><p>Senin–Jumat, 08.00–16.00</p></div></div></section></main>}
