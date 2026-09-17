@@ -968,3 +968,285 @@ footer {
     gap: 12px;
   }
 }
+
+/* ===== Inner pages ===== */
+.pageHero {
+  max-width: 1180px;
+  margin: auto;
+  padding: 70px 5% 55px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.backLink:hover {
+  color: var(--green);
+}
+
+.pageHero h1 {
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1.04;
+  letter-spacing: -2.5px;
+  margin: 14px 0 18px;
+}
+
+.pageHero > div:first-child > p {
+  color: var(--muted);
+  line-height: 1.75;
+  font-size: 14px;
+  max-width: 620px;
+  margin: 0;
+}
+
+.pageHeroCard {
+  min-height: 300px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 25px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(21, 55, 42, 0.08);
+}
+
+.pageHeroCard strong {
+  margin-top: 20px;
+  font-size: 17px;
+}
+
+.pageHeroCard > span {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 7px;
+}
+
+.profileHeroIcon {
+  width: 115px;
+  height: 115px;
+  border-radius: 32px;
+  background: var(--mint);
+  color: var(--green);
+  display: grid;
+  place-items: center;
+}
+
+.profileAboutGrid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 35px;
+  align-items: stretch;
+}
+
+.profileAboutMain,
+.profileFactCard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.profileAboutMain p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+
+.profileAboutMain p:last-child {
+  margin-bottom: 0;
+}
+
+.demoNote {
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--mint);
+  color: var(--green2) !important;
+  font-size: 11px !important;
+}
+
+.profileFactCard > span {
+  color: var(--green);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  font-weight: 900;
+}
+
+.profileFactCard div {
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+}
+
+.profileFactCard div:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.profileFactCard strong {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.profileFactCard p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.profileMission {
+  margin-top: 10px;
+}
+
+.missionCard {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.missionIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: #fff;
+  color: var(--green);
+  display: grid;
+  place-items: center;
+  margin-bottom: 17px;
+}
+
+.missionCard > strong {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
+
+.missionCard ul {
+  padding-left: 18px;
+  margin: 13px 0 0;
+  color: #d7eee5;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.profileValues {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.profileValue {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 19px;
+  padding: 25px;
+}
+
+.profileValue h3 {
+  font-size: 15px;
+  line-height: 1.35;
+  margin: 19px 0 8px;
+}
+
+.profileValue p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.staffSection {
+  padding-top: 35px;
+}
+
+.staffGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.staffCard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 21px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.staffAvatar {
+  width: 45px;
+  height: 45px;
+  flex: 0 0 auto;
+  border-radius: 14px;
+  background: var(--mint);
+  color: var(--green);
+  display: grid;
+  place-items: center;
+}
+
+.staffCard span,
+.staffCard strong {
+  display: block;
+}
+
+.staffCard span {
+  color: var(--muted);
+  font-size: 9px;
+  margin-bottom: 5px;
+}
+
+.staffCard strong {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .pageHero,
+  .profileAboutGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .profileValues {
+    grid-template-columns: 1fr;
+  }
+
+  .staffGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .pageHero {
+    padding: 50px 20px 40px;
+    gap: 30px;
+  }
+
+  .pageHero h1 {
+    letter-spacing: -1.8px;
+  }
+
+  .profileAboutMain,
+  .profileFactCard {
+    padding: 23px;
+  }
+
+  .staffGrid {
+    grid-template-columns: 1fr;
+  }
+}
