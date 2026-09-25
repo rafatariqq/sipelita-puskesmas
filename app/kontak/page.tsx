@@ -9,6 +9,9 @@ export default function Kontak() {
   );
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
+  // Link Google Maps berdasarkan koordinat Lat Long
+  const googleMapsUrl = "https://www.google.com/maps?q=-2.3112276,119.1766989";
+
   return (
     <main>
       <header className="simpleHead">
@@ -24,7 +27,19 @@ export default function Kontak() {
           <div>
             <MapPin />
             <h3>Alamat</h3>
-            <p>Jl. Contoh No. 10, Indonesia</p>
+            <p>
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "inherit",
+                  textDecoration: "underline",
+                }}
+              >
+                Jl. Contoh No. 10, Indonesia
+              </a>
+            </p>
           </div>
 
           <div>
