@@ -13,6 +13,7 @@ import {
   Hospital,
   ShieldCheck,
   UserRound,
+  X,
 } from "lucide-react";
 
 const clusters = [
@@ -23,7 +24,6 @@ const clusters = [
     description:
       "Pengelolaan administrasi, informasi, mutu, dan koordinasi pelayanan Puskesmas.",
     icon: Building2,
-    accent: "bg-emerald-50 text-emerald-700",
     services: [
       {
         title: "Administrasi & Informasi Puskesmas",
@@ -47,7 +47,6 @@ const clusters = [
       },
     ],
   },
-
   {
     number: "02",
     title: "Klaster 2",
@@ -55,7 +54,6 @@ const clusters = [
     description:
       "Pelayanan kesehatan bagi ibu, bayi, balita, anak, dan remaja.",
     icon: Baby,
-    accent: "bg-pink-50 text-pink-700",
     services: [
       {
         title: "Pelayanan Kesehatan Ibu",
@@ -79,7 +77,6 @@ const clusters = [
       },
     ],
   },
-
   {
     number: "03",
     title: "Klaster 3",
@@ -87,7 +84,6 @@ const clusters = [
     description:
       "Pelayanan kesehatan untuk masyarakat usia dewasa hingga lanjut usia.",
     icon: UserRound,
-    accent: "bg-blue-50 text-blue-700",
     services: [
       {
         title: "Pelayanan Kesehatan Dewasa",
@@ -102,7 +98,7 @@ const clusters = [
       {
         title: "Skrining Kesehatan",
         description:
-          "Pelayanan pemeriksaan awal untuk membantu mengenali kondisi dan faktor risiko kesehatan.",
+          "Pemeriksaan awal untuk membantu mengenali kondisi dan faktor risiko kesehatan.",
       },
       {
         title: "Pemantauan Faktor Risiko",
@@ -111,7 +107,6 @@ const clusters = [
       },
     ],
   },
-
   {
     number: "04",
     title: "Klaster 4",
@@ -119,7 +114,6 @@ const clusters = [
     description:
       "Upaya pencegahan, pemantauan, dan pengendalian penyakit menular.",
     icon: ShieldCheck,
-    accent: "bg-amber-50 text-amber-700",
     services: [
       {
         title: "Pencegahan & Pengendalian Penyakit Menular",
@@ -143,7 +137,6 @@ const clusters = [
       },
     ],
   },
-
   {
     number: "05",
     title: "Lintas Klaster",
@@ -151,7 +144,6 @@ const clusters = [
     description:
       "Pelayanan yang mendukung kebutuhan kesehatan lintas kelompok dan kondisi khusus.",
     icon: Hospital,
-    accent: "bg-violet-50 text-violet-700",
     services: [
       {
         title: "Pelayanan Kegawatdaruratan",
@@ -178,150 +170,120 @@ const clusters = [
 ];
 
 export default function LayananPage() {
-  const [selectedCluster, setSelectedCluster] = useState<
-    (typeof clusters)[number] | null
-  >(null);
+  const [selectedCluster, setSelectedCluster] =
+    useState<(typeof clusters)[number] | null>(null);
 
   return (
-    <main className="min-h-screen bg-[#f7faf8] text-slate-900">
+    <main className="layananPage">
       {/* HEADER */}
-      <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
-          <Link
-            href="/"
-            className="flex items-center gap-3"
-          >
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-sm">
-              <HeartPulse size={23} />
-            </div>
+      <header className="layananHeader">
+        <Link href="/" className="layananBrand">
+          <div className="layananLogo">
+            <HeartPulse size={22} />
+          </div>
 
-            <div>
-              <div className="text-sm font-bold tracking-wide text-slate-900">
-                PUSKESMAS TARAILU
-              </div>
-              <div className="text-xs text-slate-500">
-                SAMPAGA · Portal Informasi
-              </div>
-            </div>
-          </Link>
+          <div>
+            <strong>PUSKESMAS TARAILU</strong>
+            <span>SAMPAGA · Portal Informasi</span>
+          </div>
+        </Link>
 
-          <Link
-            href="/"
-            className="hidden items-center gap-2 text-sm font-medium text-slate-600 transition hover:text-emerald-700 sm:flex"
-          >
-            <ArrowLeft size={16} />
-            Kembali ke Beranda
-          </Link>
-        </div>
+        <Link href="/" className="layananBack">
+          <ArrowLeft size={16} />
+          Kembali ke Beranda
+        </Link>
       </header>
 
       {/* HERO */}
-      <section className="mx-auto max-w-7xl px-6 pb-12 pt-14 lg:px-8 lg:pt-20">
-        <div className="max-w-3xl">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-xs font-bold tracking-widest text-emerald-700">
-            <Hospital size={15} />
+      <section className="layananHero">
+        <div className="layananHeroInner">
+          <div className="layananEyebrow">
+            <Hospital size={16} />
             LAYANAN PUSKESMAS
           </div>
 
-          <h1 className="text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-            Pelayanan kesehatan
-            <br />
-            <span className="text-emerald-700">
-              dalam satu tempat.
-            </span>
-          </h1>
+          <div className="layananHeroContent">
+            <div>
+              <h1>
+                Pelayanan kesehatan
+                <br />
+                <span>dalam satu tempat.</span>
+              </h1>
+            </div>
 
-          <p className="mt-6 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
-            Kenali kelompok pelayanan kesehatan di Puskesmas Tarailu
-            Sampaga. Pilih klaster untuk melihat layanan yang tersedia
-            di dalamnya.
-          </p>
+            <div className="layananHeroDescription">
+              <p>
+                Kenali kelompok pelayanan kesehatan di Puskesmas Tarailu
+                Sampaga. Pilih klaster untuk melihat layanan yang tersedia
+                di dalamnya.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* CLUSTER LIST */}
-      <section className="mx-auto max-w-7xl px-6 pb-20 lg:px-8">
-        <div className="grid gap-5 md:grid-cols-2">
+      {/* CLUSTERS */}
+      <section className="clusterSection">
+        <div className="clusterGrid">
           {clusters.map((cluster) => {
             const Icon = cluster.icon;
 
             return (
-              <div
-                key={cluster.number}
-                className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                {/* NUMBER */}
-                <div className="absolute right-6 top-5 text-5xl font-black tracking-tighter text-slate-100">
-                  {cluster.number}
+              <article className="clusterCard" key={cluster.number}>
+                <div className="clusterNumber">{cluster.number}</div>
+
+                <div className="clusterIcon">
+                  <Icon size={25} />
                 </div>
 
-                {/* ICON */}
-                <div
-                  className={`relative mb-6 flex h-14 w-14 items-center justify-center rounded-2xl ${cluster.accent}`}
-                >
-                  <Icon size={26} />
-                </div>
-
-                {/* TITLE */}
-                <div className="relative">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">
+                <div className="clusterContent">
+                  <span className="clusterLabel">
                     {cluster.title}
-                  </p>
+                  </span>
 
-                  <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900">
-                    {cluster.subtitle}
-                  </h2>
+                  <h2>{cluster.subtitle}</h2>
 
-                  <p className="mt-3 max-w-lg text-sm leading-6 text-slate-600">
-                    {cluster.description}
-                  </p>
+                  <p>{cluster.description}</p>
                 </div>
 
-                {/* FOOTER CARD */}
-                <div className="relative mt-7 flex items-center justify-between border-t border-slate-100 pt-5">
-                  <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
-                    <CheckCircle2
-                      size={16}
-                      className="text-emerald-600"
-                    />
+                <div className="clusterFooter">
+                  <div className="clusterCount">
+                    <CheckCircle2 size={16} />
                     {cluster.services.length} layanan
                   </div>
 
                   <button
+                    type="button"
+                    className="clusterDetail"
                     onClick={() => setSelectedCluster(cluster)}
-                    className="inline-flex items-center gap-2 text-sm font-bold text-emerald-700 transition group-hover:gap-3 hover:text-emerald-800"
                   >
                     Lihat detail
-                    <ArrowRight size={17} />
+                    <ArrowRight size={16} />
                   </button>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
       </section>
 
-      {/* INFORMATION BAND */}
-      <section className="border-y border-emerald-100 bg-emerald-50">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      {/* INFO */}
+      <section className="layananInfo">
+        <div className="layananInfoInner">
           <div>
-            <p className="text-sm font-bold text-emerald-700">
-              INFORMASI PELAYANAN
-            </p>
+            <span>INFORMASI PELAYANAN</span>
 
-            <h2 className="mt-1 text-xl font-bold text-slate-900">
-              Ingin mengetahui persyaratan sebelum datang?
+            <h2>
+              Siapkan kebutuhan sebelum mendapatkan pelayanan.
             </h2>
 
-            <p className="mt-2 text-sm text-slate-600">
-              Periksa dokumen dan persyaratan pelayanan terlebih dahulu.
+            <p>
+              Periksa persyaratan pelayanan terlebih dahulu agar proses
+              administrasi dapat berjalan lebih mudah.
             </p>
           </div>
 
-          <Link
-            href="/persyaratan"
-            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-800"
-          >
+          <Link href="/persyaratan" className="layananInfoButton">
             Lihat Persyaratan
             <ArrowRight size={17} />
           </Link>
@@ -329,115 +291,91 @@ export default function LayananPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between lg:px-8">
-          <div>
-            <p className="font-bold text-slate-800">
-              PUSKESMAS TARAILU SAMPAGA
-            </p>
-            <p className="mt-1">
-              Portal Informasi Pelayanan Kesehatan Masyarakat.
-            </p>
-          </div>
-
-          <div>© 2026 Puskesmas Tarailu Sampaga</div>
+      <footer className="layananFooter">
+        <div>
+          <strong>PUSKESMAS TARAILU SAMPAGA</strong>
+          <p>Portal Informasi Pelayanan Kesehatan Masyarakat.</p>
         </div>
+
+        <span>© 2026 Puskesmas Tarailu Sampaga</span>
       </footer>
 
-      {/* DETAIL MODAL */}
+      {/* MODAL DETAIL */}
       {selectedCluster && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 px-4 py-6 backdrop-blur-sm"
+          className="clusterModalOverlay"
           onClick={() => setSelectedCluster(null)}
         >
           <div
-            className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl bg-white shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
+            className="clusterModal"
+            onClick={(event) => event.stopPropagation()}
           >
-            {/* MODAL HEADER */}
-            <div className="border-b border-slate-100 px-6 pb-6 pt-7 sm:px-8">
-              <button
-                onClick={() => setSelectedCluster(null)}
-                className="mb-7 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-emerald-700"
-              >
-                <ArrowLeft size={16} />
-                Kembali
-              </button>
+            <button
+              type="button"
+              className="clusterModalClose"
+              onClick={() => setSelectedCluster(null)}
+              aria-label="Tutup"
+            >
+              <X size={20} />
+            </button>
 
-              <div className="flex items-start gap-4">
-                <div
-                  className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${selectedCluster.accent}`}
-                >
-                  <selectedCluster.icon size={26} />
-                </div>
-
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">
-                    {selectedCluster.title}
-                  </p>
-
-                  <h2 className="mt-1 text-2xl font-bold text-slate-900 sm:text-3xl">
-                    {selectedCluster.subtitle}
-                  </h2>
-                </div>
+            <div className="clusterModalHeader">
+              <div className="clusterModalIcon">
+                <selectedCluster.icon size={26} />
               </div>
 
-              <p className="mt-5 max-w-2xl text-sm leading-6 text-slate-600">
-                {selectedCluster.description}
-              </p>
+              <div>
+                <span>{selectedCluster.title}</span>
+                <h2>{selectedCluster.subtitle}</h2>
+              </div>
             </div>
 
-            {/* SERVICES */}
-            <div className="px-6 py-7 sm:px-8">
-              <div className="mb-5">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">
-                  LAYANAN DALAM KLASTER
-                </p>
+            <p className="clusterModalDescription">
+              {selectedCluster.description}
+            </p>
 
-                <h3 className="mt-1 text-xl font-bold text-slate-900">
-                  Pilihan pelayanan
-                </h3>
-              </div>
+            <div className="modalDivider" />
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                {selectedCluster.services.map((service, index) => (
-                  <div
-                    key={service.title}
-                    className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:border-emerald-200 hover:bg-emerald-50/50"
-                  >
-                    <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-xl bg-white text-sm font-bold text-emerald-700 shadow-sm">
-                      {String(index + 1).padStart(2, "0")}
-                    </div>
+            <div className="modalSectionTitle">
+              <span>LAYANAN DALAM KLASTER</span>
+              <h3>Pilihan pelayanan</h3>
+            </div>
 
-                    <h4 className="font-bold leading-6 text-slate-900">
-                      {service.title}
-                    </h4>
-
-                    <p className="mt-2 text-sm leading-6 text-slate-600">
-                      {service.description}
-                    </p>
+            <div className="modalServiceGrid">
+              {selectedCluster.services.map((service, index) => (
+                <div className="modalService" key={service.title}>
+                  <div className="modalServiceNumber">
+                    {String(index + 1).padStart(2, "0")}
                   </div>
-                ))}
-              </div>
+
+                  <div>
+                    <h4>{service.title}</h4>
+                    <p>{service.description}</p>
+                  </div>
+
+                  <ChevronRight
+                    size={18}
+                    className="modalServiceArrow"
+                  />
+                </div>
+              ))}
             </div>
 
-            {/* MODAL FOOTER */}
-            <div className="border-t border-slate-100 bg-slate-50 px-6 py-5 sm:px-8">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-sm text-slate-500">
-                  Informasi pelayanan dapat berubah sesuai kebijakan
-                  Puskesmas.
+            <div className="modalBottom">
+              <div>
+                <strong>Perlu informasi lebih lanjut?</strong>
+                <p>
+                  Periksa persyaratan atau hubungi Puskesmas.
                 </p>
-
-                <Link
-                  href="/persyaratan"
-                  onClick={() => setSelectedCluster(null)}
-                  className="inline-flex items-center gap-2 text-sm font-bold text-emerald-700 hover:text-emerald-800"
-                >
-                  Lihat persyaratan
-                  <ChevronRight size={17} />
-                </Link>
               </div>
+
+              <Link
+                href="/persyaratan"
+                onClick={() => setSelectedCluster(null)}
+              >
+                Persyaratan
+                <ArrowRight size={16} />
+              </Link>
             </div>
           </div>
         </div>
