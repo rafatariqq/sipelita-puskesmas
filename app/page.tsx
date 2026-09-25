@@ -10,51 +10,45 @@ import {
   Info,
   MapPin,
   MessageSquare,
-  Pill,
-  Stethoscope,
-  Syringe,
+  ShieldCheck,
   Users,
+  Building2,
 } from "lucide-react";
 
 const services = [
   {
-    title: "Poli Umum",
-    description: "Pelayanan pemeriksaan kesehatan umum bagi masyarakat.",
-    icon: Stethoscope,
+    title: "Klaster 1",
+    subtitle: "Manajemen",
+    description:
+      "Pengelolaan administrasi, informasi, mutu, dan sistem pelayanan Puskesmas.",
+    icon: Building2,
   },
   {
-    title: "Poli Gigi",
-    description: "Pemeriksaan dan pelayanan kesehatan gigi dan mulut.",
+    title: "Klaster 2",
+    subtitle: "Ibu dan Anak",
+    description:
+      "Pelayanan kesehatan bagi ibu, bayi, balita, anak, dan remaja.",
     icon: HeartPulse,
   },
   {
-    title: "KIA & KB",
-    description: "Pelayanan kesehatan ibu, anak, dan keluarga berencana.",
+    title: "Klaster 3",
+    subtitle: "Usia Dewasa dan Lansia",
+    description:
+      "Pelayanan kesehatan untuk masyarakat usia dewasa hingga lanjut usia.",
     icon: Users,
   },
   {
-    title: "Imunisasi",
-    description: "Pelayanan imunisasi sesuai jadwal dan kebutuhan masyarakat.",
-    icon: Syringe,
+    title: "Klaster 4",
+    subtitle: "Penanggulangan Penyakit Menular",
+    description:
+      "Upaya pencegahan, pemantauan, dan pengendalian penyakit menular.",
+    icon: ShieldCheck,
   },
   {
-    title: "Laboratorium",
-    description: "Informasi dan pelayanan pemeriksaan laboratorium.",
-    icon: FileText,
-  },
-  {
-    title: "Farmasi",
-    description: "Pelayanan obat dan informasi penggunaan obat.",
-    icon: Pill,
-  },
-  {
-    title: "Promosi Kesehatan",
-    description: "Edukasi dan informasi untuk mendukung hidup sehat.",
-    icon: HeartPulse,
-  },
-  {
-    title: "Layanan Lainnya",
-    description: "Lihat informasi layanan kesehatan Puskesmas lainnya.",
+    title: "Lintas Klaster",
+    subtitle: "Pelayanan Pendukung",
+    description:
+      "Pelayanan yang mendukung kebutuhan kesehatan lintas kelompok dan kondisi khusus.",
     icon: Hospital,
   },
 ];
@@ -83,11 +77,13 @@ const announcements = [
 export default function Home() {
   return (
     <main>
+      {/* NAVBAR */}
       <header className="nav">
         <Link href="/" className="brand" aria-label="Puskesmas Tarailu Sampaga">
           <div className="logo">
             <HeartPulse size={22} />
           </div>
+
           <div>
             <b>PUSKESMAS TARAILU</b>
             <span>SAMPAGA · Portal Informasi</span>
@@ -108,6 +104,7 @@ export default function Home() {
         </Link>
       </header>
 
+      {/* HERO */}
       <section className="hero">
         <div className="heroText">
           <div className="pill">
@@ -131,6 +128,7 @@ export default function Home() {
             <Link className="primary" href="#layanan">
               Jelajahi Layanan <ArrowRight size={18} />
             </Link>
+
             <Link className="secondary" href="/kontak">
               Hubungi Kami
             </Link>
@@ -144,17 +142,20 @@ export default function Home() {
 
         <div className="heroVisual">
           <div className="visualGlow" />
+
           <div className="healthCard">
             <div className="healthCardTop">
               <div className="healthIcon">
                 <HeartPulse size={25} />
               </div>
+
               <span>LAYANAN KESEHATAN</span>
             </div>
 
             <div className="healthIllustration">
               <div className="cross crossOne">+</div>
               <div className="cross crossTwo">+</div>
+
               <div className="circlePulse">
                 <HeartPulse size={54} />
               </div>
@@ -165,6 +166,7 @@ export default function Home() {
                 <small>Fasilitas</small>
                 <strong>Puskesmas Tarailu</strong>
               </div>
+
               <div className="openBadge">
                 <span />
                 Pelayanan
@@ -174,14 +176,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* QUICK INFO */}
       <section className="quickInfo">
         <div className="quickItem">
           <div className="quickIcon">
             <Info size={21} />
           </div>
+
           <div>
             <strong>Informasi Terpusat</strong>
-            <span>Layanan dan informasi Puskesmas dalam satu portal.</span>
+            <span>
+              Layanan dan informasi Puskesmas dalam satu portal.
+            </span>
           </div>
         </div>
 
@@ -189,9 +195,12 @@ export default function Home() {
           <div className="quickIcon">
             <FileText size={21} />
           </div>
+
           <div>
             <strong>Persyaratan Jelas</strong>
-            <span>Ketahui dokumen yang perlu disiapkan sebelum pelayanan.</span>
+            <span>
+              Ketahui dokumen yang perlu disiapkan sebelum pelayanan.
+            </span>
           </div>
         </div>
 
@@ -199,53 +208,83 @@ export default function Home() {
           <div className="quickIcon">
             <MessageSquare size={21} />
           </div>
+
           <div>
             <strong>Pengaduan Masyarakat</strong>
-            <span>Sampaikan kritik, saran, dan masukan kepada kami.</span>
+            <span>
+              Sampaikan kritik, saran, dan masukan kepada kami.
+            </span>
           </div>
         </div>
       </section>
 
+      {/* LAYANAN */}
       <section className="section" id="layanan">
         <div className="sectionHead">
           <div>
             <span className="eyebrow">LAYANAN PUSKESMAS</span>
+
             <h2>
               Temukan layanan
               <br />
               yang Anda butuhkan.
             </h2>
           </div>
+
           <p>
-            Pilih layanan untuk mendapatkan informasi singkat mengenai
+            Pilih klaster untuk mendapatkan informasi mengenai kelompok
             pelayanan kesehatan yang tersedia di Puskesmas Tarailu Sampaga.
           </p>
         </div>
 
         <div className="serviceGrid">
-          {services.map(({ title, description, icon: Icon }) => (
-            <Link className="service" href="/layanan" key={title}>
-              <div className="icon">
-                <Icon size={23} />
-              </div>
-              <h3>{title}</h3>
-              <p>{description}</p>
-              <span>
-                Lihat detail <ArrowRight size={16} />
-              </span>
-            </Link>
-          ))}
+          {services.map(
+            ({ title, subtitle, description, icon: Icon }) => (
+              <Link
+                className="service"
+                href="/layanan"
+                key={title}
+              >
+                <div className="icon">
+                  <Icon size={23} />
+                </div>
+
+                <h3>{title}</h3>
+
+                <strong
+                  style={{
+                    display: "block",
+                    marginTop: "4px",
+                    marginBottom: "10px",
+                    fontSize: "15px",
+                  }}
+                >
+                  {subtitle}
+                </strong>
+
+                <p>{description}</p>
+
+                <span>
+                  Lihat detail <ArrowRight size={16} />
+                </span>
+              </Link>
+            )
+          )}
         </div>
       </section>
 
+      {/* PERSYARATAN */}
       <section className="splitBand" id="persyaratan">
         <div className="splitContent">
           <span className="eyebrow">PERSYARATAN PELAYANAN</span>
+
           <h2>Siapkan dokumen sebelum datang.</h2>
+
           <p>
             Periksa persyaratan pelayanan terlebih dahulu agar proses
             administrasi dapat dilakukan dengan lebih mudah.
           </p>
+
           <Link className="whiteBtn" href="/persyaratan">
             Lihat Persyaratan <ArrowRight size={17} />
           </Link>
@@ -255,22 +294,27 @@ export default function Home() {
           <div className="requirementIcon">
             <FileText size={24} />
           </div>
+
           <div>
             <strong>Dokumen pelayanan</strong>
+
             <p>
               Informasi persyaratan dapat berbeda sesuai dengan jenis layanan.
             </p>
           </div>
+
           <ChevronRight size={20} />
         </div>
       </section>
 
+      {/* JADWAL */}
       <section className="section scheduleSection" id="jadwal">
         <div className="sectionHead">
           <div>
             <span className="eyebrow">JADWAL PELAYANAN</span>
             <h2>Ketahui waktu pelayanan.</h2>
           </div>
+
           <Link className="textLink" href="/jadwal">
             Lihat jadwal lengkap <ArrowRight size={16} />
           </Link>
@@ -281,6 +325,7 @@ export default function Home() {
             <div className="scheduleIcon">
               <CalendarDays size={25} />
             </div>
+
             <div>
               <span>JAM OPERASIONAL</span>
               <strong>Senin – Jumat</strong>
@@ -290,6 +335,7 @@ export default function Home() {
 
           <div className="scheduleSmall">
             <Clock3 size={21} />
+
             <div>
               <strong>Jadwal dapat berubah</strong>
               <p>Periksa informasi terbaru sebelum berkunjung.</p>
@@ -298,20 +344,25 @@ export default function Home() {
 
           <div className="scheduleSmall">
             <MapPin size={21} />
+
             <div>
               <strong>Lokasi Puskesmas</strong>
-              <p>Tarailu, Kecamatan Sampaga, Kabupaten Mamuju.</p>
+              <p>
+                Tarailu, Kecamatan Sampaga, Kabupaten Mamuju.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
+      {/* INFORMASI */}
       <section className="section news" id="informasi">
         <div className="sectionHead">
           <div>
             <span className="eyebrow">INFORMASI TERBARU</span>
             <h2>Berita & pengumuman.</h2>
           </div>
+
           <Link className="textLink" href="/informasi">
             Semua informasi <ArrowRight size={16} />
           </Link>
@@ -321,8 +372,11 @@ export default function Home() {
           {announcements.map((item) => (
             <article key={item.title}>
               <span>{item.date}</span>
+
               <h3>{item.title}</h3>
+
               <p>{item.description}</p>
+
               <Link href="/informasi">
                 Baca selengkapnya <ArrowRight size={15} />
               </Link>
@@ -331,6 +385,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PROFIL */}
       <section className="profileBand" id="profil">
         <div className="profileVisual">
           <div className="profileSquare">
@@ -340,7 +395,9 @@ export default function Home() {
 
         <div className="profileText">
           <span className="eyebrow">PROFIL PUSKESMAS</span>
+
           <h2>Puskesmas Tarailu Sampaga</h2>
+
           <p>
             Puskesmas Tarailu Sampaga hadir sebagai bagian dari pelayanan
             kesehatan masyarakat di wilayah Sampaga. Portal ini menyediakan
@@ -352,6 +409,7 @@ export default function Home() {
             <Link href="/profil">
               Tentang Puskesmas <ArrowRight size={16} />
             </Link>
+
             <Link href="/profil#struktur">
               Struktur Organisasi <ArrowRight size={16} />
             </Link>
@@ -359,25 +417,31 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CONTACT CTA */}
       <section className="contactCta">
         <div>
           <span className="eyebrow">BUTUH INFORMASI?</span>
+
           <h2>Hubungi Puskesmas Tarailu Sampaga.</h2>
+
           <p>
             Gunakan halaman kontak untuk melihat alamat, nomor yang dapat
             dihubungi, jam pelayanan, dan lokasi Puskesmas.
           </p>
         </div>
+
         <Link className="primary" href="/kontak">
           Buka Halaman Kontak <ArrowRight size={18} />
         </Link>
       </section>
 
+      {/* FOOTER */}
       <footer>
         <div className="footerBrand">
           <div className="footerLogo">
             <HeartPulse size={21} />
           </div>
+
           <div>
             <b>PUSKESMAS TARAILU SAMPAGA</b>
             <p>Portal Informasi Pelayanan Kesehatan Masyarakat.</p>
