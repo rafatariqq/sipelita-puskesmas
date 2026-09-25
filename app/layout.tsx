@@ -1,6 +1,5 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Puskesmas Tarailu Sampaga",
@@ -14,9 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
