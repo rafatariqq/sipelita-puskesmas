@@ -11,10 +11,10 @@ import {
 } from "lucide-react";
 
 export default function Kontak() {
-  // Format nomor untuk wa.me menggunakan kode negara (6282353685324)
+  // Format nomor WA menggunakan kode negara (6282353685324)
   const whatsappNumber = "6282353685324";
   const whatsappMessage = encodeURIComponent(
-    "Halo SIPELITA, saya ingin bertanya mengenai layanan Puskesmas."
+    "Halo SIPELITA, saya ingin bertanya mengenai layanan Puskesmas Tarailu Sampaga."
   );
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
@@ -23,152 +23,497 @@ export default function Kontak() {
     "https://www.google.com/maps/place/Puskesmas+Satelit+Tarailu/@-2.3111475,119.1754624,18z/data=!4m23!1m16!4m15!1m6!1m2!1s0x2d92d833d4d70f27:0xec8b6ecb8c7bb406!2sJl.+Poros+Mamuju+-+Topoyo,+Sulawesi+Barat!2m2!1d119.1621854!2d-2.4195697!1m6!1m2!1s0x2d9290f914f05173:0xb0b84e39a98a507!2sTarailu,+Kec.+Sampaga,+Kabupaten+Mamuju,+Sulawesi+Barat!2m2!1d119.179765!2d-2.3173016!3e0!3m5!1s0x2d9291e7019333a9:0x7ba3c2a8525060fc!8m2!3d-2.3112276!4d119.1766989!16s%2Fg%2F11ghsjk6wk";
 
   return (
-    <div className="min-h-screen bg-[#fcfdfe] text-gray-800 font-sans">
+    <div className="sipelita-page">
+      {/* ===== EMBEDDED STANDALONE STYLES ===== */}
+      <style>{`
+        .sipelita-page {
+          min-height: 100vh;
+          background-color: #f7fbf9;
+          color: #1f2937;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        .sipelita-header {
+          position: sticky;
+          top: 0;
+          z-index: 50;
+          background-color: rgba(255, 255, 255, 0.92);
+          backdrop-filter: blur(8px);
+          border-bottom: 1px solid #eef2f0;
+          padding: 16px 40px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .sipelita-logo {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          text-decoration: none;
+          color: inherit;
+        }
+
+        .sipelita-logo-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 12px;
+          background-color: #e6f4ee;
+          border: 1px solid #c2e5d5;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #0d7a5f;
+        }
+
+        .sipelita-logo-title {
+          font-weight: 900;
+          font-size: 15px;
+          letter-spacing: -0.3px;
+          color: #111827;
+          text-transform: uppercase;
+          line-height: 1.1;
+        }
+
+        .sipelita-logo-sub {
+          font-size: 11px;
+          font-weight: 600;
+          color: #8896a6;
+          letter-spacing: 0.5px;
+        }
+
+        .sipelita-nav {
+          display: flex;
+          align-items: center;
+          gap: 28px;
+        }
+
+        .sipelita-nav a {
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 500;
+          color: #4b5563;
+          transition: color 0.2s;
+        }
+
+        .sipelita-nav a:hover, .sipelita-nav a.active {
+          color: #0d7a5f;
+          font-weight: 700;
+        }
+
+        .sipelita-btn-outline {
+          padding: 8px 20px;
+          border-radius: 9999px;
+          border: 1px solid #d1d5db;
+          background-color: #ffffff;
+          font-size: 14px;
+          font-weight: 600;
+          color: #1f2937;
+          text-decoration: none;
+          transition: all 0.2s;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        .sipelita-btn-outline:hover {
+          border-color: #0d7a5f;
+          color: #0d7a5f;
+          box-shadow: 0 2px 8px rgba(13, 122, 95, 0.12);
+        }
+
+        .sipelita-main {
+          max-width: 1140px;
+          margin: 0 auto;
+          padding: 48px 24px 80px 24px;
+        }
+
+        .sipelita-hero {
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 48px;
+          align-items: center;
+          margin-bottom: 64px;
+        }
+
+        @media (max-width: 900px) {
+          .sipelita-hero {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+          .sipelita-nav {
+            display: none;
+          }
+          .sipelita-header {
+            padding: 16px 20px;
+          }
+        }
+
+        .sipelita-eyebrow {
+          font-size: 12px;
+          font-weight: 800;
+          letter-spacing: 1.5px;
+          color: #0d7a5f;
+          text-transform: uppercase;
+          margin-bottom: 12px;
+          display: block;
+        }
+
+        .sipelita-hero-title {
+          font-size: 48px;
+          font-weight: 900;
+          line-height: 1.1;
+          color: #111827;
+          margin: 0 0 20px 0;
+          letter-spacing: -1px;
+        }
+
+        .sipelita-hero-title span {
+          color: #0d7a5f;
+        }
+
+        .sipelita-hero-desc {
+          font-size: 15px;
+          line-height: 1.6;
+          color: #6b7280;
+          margin-bottom: 32px;
+          max-width: 520px;
+        }
+
+        .sipelita-btn-group {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .sipelita-btn-primary {
+          background-color: #0d7a5f;
+          color: #ffffff;
+          padding: 12px 24px;
+          border-radius: 14px;
+          font-size: 14px;
+          font-weight: 600;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          transition: all 0.2s;
+          box-shadow: 0 4px 12px rgba(13, 122, 95, 0.25);
+        }
+
+        .sipelita-btn-primary:hover {
+          background-color: #0a634d;
+          transform: translateY(-1px);
+          box-shadow: 0 6px 16px rgba(13, 122, 95, 0.35);
+        }
+
+        .sipelita-btn-link {
+          color: #0d7a5f;
+          font-size: 14px;
+          font-weight: 700;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 12px 16px;
+          border-radius: 12px;
+          transition: background-color 0.2s;
+        }
+
+        .sipelita-btn-link:hover {
+          background-color: #e6f4ee;
+        }
+
+        /* Hero Right Graphic */
+        .sipelita-graphic-wrapper {
+          display: flex;
+          justify-content: center;
+          position: relative;
+        }
+
+        .sipelita-circle-bg {
+          width: 320px;
+          height: 320px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(230, 244, 238, 0.9) 0%, rgba(240, 249, 245, 0.4) 100%);
+          border: 1px solid #d3ebd8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+        }
+
+        .sipelita-circle-inner {
+          width: 240px;
+          height: 240px;
+          border-radius: 50%;
+          border: 2px dashed #b3e0cd;
+          background-color: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(4px);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 20px;
+        }
+
+        .sipelita-badge {
+          position: absolute;
+          bottom: 10px;
+          right: -10px;
+          background-color: #ffffff;
+          padding: 12px 18px;
+          border-radius: 16px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+          border: 1px solid #f3f4f6;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .sipelita-badge-icon {
+          width: 38px;
+          height: 38px;
+          border-radius: 10px;
+          background-color: #e6f4ee;
+          color: #0d7a5f;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* Content Cards Section */
+        .sipelita-section {
+          border-top: 1px solid #eef2f0;
+          padding-top: 48px;
+        }
+
+        .sipelita-section-header {
+          margin-bottom: 32px;
+        }
+
+        .sipelita-section-title {
+          font-size: 32px;
+          font-weight: 900;
+          color: #111827;
+          margin: 4px 0 0 0;
+          letter-spacing: -0.5px;
+        }
+
+        .sipelita-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+        }
+
+        @media (max-width: 850px) {
+          .sipelita-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .sipelita-card {
+          background-color: #ffffff;
+          border-radius: 24px;
+          padding: 28px;
+          border: 1px solid #f0f0f0;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          gap: 20px;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .sipelita-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .sipelita-card-accent {
+          background-color: #e6f4ee;
+          border-color: #d1eae0;
+        }
+
+        .sipelita-card-icon {
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          background-color: #e6f4ee;
+          color: #0d7a5f;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .sipelita-card-accent .sipelita-card-icon {
+          background-color: #ffffff;
+        }
+
+        .sipelita-card-label {
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 1px;
+          color: #0d7a5f;
+          text-transform: uppercase;
+          margin-top: 12px;
+          display: block;
+        }
+
+        .sipelita-card-heading {
+          font-size: 18px;
+          font-weight: 800;
+          color: #111827;
+          margin: 6px 0;
+        }
+
+        .sipelita-card-desc {
+          font-size: 13px;
+          color: #6b7280;
+          line-height: 1.5;
+          margin: 0;
+        }
+
+        .sipelita-card-action {
+          font-size: 13px;
+          font-weight: 700;
+          color: #0d7a5f;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          margin-top: auto;
+        }
+
+        .sipelita-card-action:hover {
+          text-decoration: underline;
+        }
+      `}</style>
+
       {/* ===== NAVBAR HEADER ===== */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-6 lg:px-16 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700 font-bold group-hover:scale-105 transition-transform">
-            <Building2 className="w-5 h-5 text-emerald-700" />
+      <header className="sipelita-header">
+        <Link href="/" className="sipelita-logo">
+          <div className="sipelita-logo-icon">
+            <Building2 size={22} />
           </div>
           <div>
-            <span className="block font-black text-gray-900 tracking-tight text-base uppercase leading-none">
-              PUSKESMAS TARAILU
-            </span>
-            <span className="text-[11px] font-semibold text-gray-400 tracking-wider">
-              SAMPAGA · Portal Informasi
-            </span>
+            <span className="sipelita-logo-title">PUSKESMAS TARAILU</span>
+            <div className="sipelita-logo-sub">SAMPAGA · Portal Informasi</div>
           </div>
         </Link>
 
-        {/* Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-          <Link href="/" className="hover:text-emerald-700 transition-colors">
-            Beranda
-          </Link>
-          <Link href="/profil" className="hover:text-emerald-700 transition-colors">
+        <nav className="sipelita-nav">
+          <Link href="/">Beranda</Link>
+          <Link href="/profil" className="active">
             Profil
           </Link>
-          <Link href="/layanan" className="hover:text-emerald-700 transition-colors">
-            Layanan
-          </Link>
-          <Link href="/persyaratan" className="hover:text-emerald-700 transition-colors">
-            Persyaratan
-          </Link>
-          <Link href="/jadwal" className="hover:text-emerald-700 transition-colors">
-            Jadwal
-          </Link>
-          <Link href="/informasi" className="hover:text-emerald-700 transition-colors">
-            Informasi
-          </Link>
+          <Link href="/layanan">Layanan</Link>
+          <Link href="/persyaratan">Persyaratan</Link>
+          <Link href="/jadwal">Jadwal</Link>
+          <Link href="/informasi">Informasi</Link>
         </nav>
 
-        {/* CTA Hubungi Kami Button */}
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-5 py-2.5 rounded-full border border-gray-300 text-sm font-semibold text-gray-800 hover:border-emerald-600 hover:text-emerald-700 transition-all shadow-sm"
+          className="sipelita-btn-outline"
         >
           Hubungi Kami
         </a>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 lg:px-16 py-12 lg:py-16 space-y-20">
-        {/* ===== HERO SECTION ===== */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Text Content */}
-          <div className="lg:col-span-7 space-y-6">
-            <span className="inline-block text-xs font-extrabold tracking-widest text-emerald-800 uppercase">
-              PROFIL PUSKESMAS & KONTAK
-            </span>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-[1.15] tracking-tight">
+      {/* ===== MAIN CONTENT ===== */}
+      <main className="sipelita-main">
+        {/* HERO SECTION */}
+        <section className="sipelita-hero">
+          <div>
+            <span className="sipelita-eyebrow">PROFIL PUSKESMAS & KONTAK</span>
+            <h1 className="sipelita-hero-title">
               Mengenal <br />
-              <span className="text-[#0d7a5f]">Puskesmas</span> <br />
-              <span className="text-[#0d7a5f]">Tarailu Sampaga.</span>
+              <span>Puskesmas</span> <br />
+              <span>Tarailu Sampaga.</span>
             </h1>
-
-            <p className="text-gray-500 text-base sm:text-lg max-w-xl font-normal leading-relaxed">
+            <p className="sipelita-hero-desc">
               Informasi mengenai profil, arah pelayanan, lokasi, serta layanan konsultasi cepat langsung terhubung dengan petugas Puskesmas Tarailu Sampaga.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="sipelita-btn-group">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#0d7a5f] hover:bg-[#0a634d] text-white px-6 py-3.5 rounded-2xl font-semibold text-sm transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                className="sipelita-btn-primary"
               >
-                <MessageCircle className="w-4 h-4" />
+                <MessageCircle size={18} />
                 Chat via WhatsApp
-                <ArrowRight className="w-4 h-4 ml-1" />
+                <ArrowRight size={18} />
               </a>
 
               <a
                 href={googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-emerald-800 hover:text-emerald-900 font-bold text-sm px-4 py-3 rounded-xl hover:bg-emerald-50 transition-colors"
+                className="sipelita-btn-link"
               >
                 Lihat di Google Maps
-                <ExternalLink className="w-4 h-4" />
+                <ExternalLink size={16} />
               </a>
             </div>
           </div>
 
-          {/* Right Column: Hero Graphic Element */}
-          <div className="lg:col-span-5 flex justify-center relative">
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-emerald-100/70 to-emerald-50/30 flex items-center justify-center p-8 border border-emerald-100/50 shadow-inner">
-              <div className="w-full h-full rounded-full border-2 border-dashed border-emerald-200/60 flex flex-col items-center justify-center text-center p-6 bg-white/40 backdrop-blur-sm">
-                <Building2 className="w-16 h-16 text-emerald-700/80 mb-2" />
-                <span className="text-sm font-bold text-gray-700">
+          {/* GRAPHIC CIRCLE */}
+          <div className="sipelita-graphic-wrapper">
+            <div className="sipelita-circle-bg">
+              <div className="sipelita-circle-inner">
+                <Building2 size={48} color="#0d7a5f" style={{ marginBottom: 8 }} />
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#374151" }}>
                   Logo Puskesmas Tarailu
                 </span>
-                <span className="text-xs text-gray-400">Sampaga</span>
+                <span style={{ fontSize: 11, color: "#9ca3af" }}>Sampaga</span>
               </div>
 
-              {/* Floating Badge (seperti di gambar) */}
-              <div className="absolute -bottom-2 -right-2 sm:bottom-4 sm:right-0 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 flex items-center gap-3.5 backdrop-blur-md">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
-                  <Heart className="w-5 h-5 fill-emerald-600 text-emerald-600" />
+              {/* Floating Badge */}
+              <div className="sipelita-badge">
+                <div className="sipelita-badge-icon">
+                  <Heart size={20} fill="#0d7a5f" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-gray-900 leading-snug">
+                  <div style={{ fontSize: 13, fontWeight: 800, color: "#111827" }}>
                     Pelayanan Kesehatan
-                  </h4>
-                  <p className="text-xs text-gray-400">Untuk masyarakat</p>
+                  </div>
+                  <div style={{ fontSize: 11, color: "#9ca3af" }}>Untuk masyarakat</div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ===== INFORMASI KONTAK & LOKASI SECTION ===== */}
-        <section className="space-y-8 pt-6 border-t border-gray-100">
-          <div className="space-y-2">
-            <span className="text-xs font-extrabold tracking-widest text-emerald-800 uppercase">
-              HUBUNGI KAMI
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
+        {/* INFORMASI SECTION */}
+        <section className="sipelita-section">
+          <div className="sipelita-section-header">
+            <span className="sipelita-eyebrow">HUBUNGI KAMI</span>
+            <h2 className="sipelita-section-title">
               Pelayanan kesehatan untuk masyarakat.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Card 1: Alamat */}
-            <div className="bg-emerald-50/50 rounded-3xl p-6 border border-emerald-100/80 hover:shadow-md transition-all flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-white text-emerald-700 flex items-center justify-center shadow-sm">
-                  <MapPin className="w-5 h-5 text-emerald-700" />
+          <div className="sipelita-grid">
+            {/* Card 1: Lokasi */}
+            <div className="sipelita-card sipelita-card-accent">
+              <div>
+                <div className="sipelita-card-icon">
+                  <MapPin size={22} />
                 </div>
-                <span className="block text-xs font-bold text-emerald-800 uppercase tracking-wider">
-                  LOKASI
-                </span>
-                <h3 className="text-base font-extrabold text-gray-900 leading-snug">
+                <span className="sipelita-card-label">LOKASI</span>
+                <h3 className="sipelita-card-heading">
                   Desa Tarailu, Kecamatan Sampaga
                 </h3>
-                <p className="text-xs text-gray-500 leading-relaxed">
+                <p className="sipelita-card-desc">
                   Puskesmas Satelit Tarailu, Kec. Sampaga, Kab. Mamuju, Sulawesi Barat.
                 </p>
               </div>
@@ -176,25 +521,21 @@ export default function Kontak() {
                 href={googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 hover:text-emerald-900 hover:underline pt-2"
+                className="sipelita-card-action"
               >
-                Buka Peta Google Maps <ExternalLink className="w-3.5 h-3.5" />
+                Buka Peta Google Maps <ExternalLink size={14} />
               </a>
             </div>
 
             {/* Card 2: WhatsApp / Telepon */}
-            <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-emerald-700" />
+            <div className="sipelita-card">
+              <div>
+                <div className="sipelita-card-icon">
+                  <Phone size={22} />
                 </div>
-                <span className="block text-xs font-bold text-emerald-800 uppercase tracking-wider">
-                  TELEPON / WHATSAPP
-                </span>
-                <h3 className="text-base font-extrabold text-gray-900 leading-snug">
-                  0823-5368-5324
-                </h3>
-                <p className="text-xs text-gray-500 leading-relaxed">
+                <span className="sipelita-card-label">TELEPON / WHATSAPP</span>
+                <h3 className="sipelita-card-heading">0823-5368-5324</h3>
+                <p className="sipelita-card-desc">
                   Layanan konsultasi cepat dan pendaftaran melalui pesan resmi WhatsApp.
                 </p>
               </div>
@@ -202,29 +543,33 @@ export default function Kontak() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0d7a5f] hover:underline pt-2"
+                className="sipelita-card-action"
               >
-                Chat WhatsApp Sekarang <ArrowRight className="w-3.5 h-3.5" />
+                Chat WhatsApp Sekarang <ArrowRight size={14} />
               </a>
             </div>
 
-            {/* Card 3: Jam Pelayanan */}
-            <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
-                  <Clock3 className="w-5 h-5 text-emerald-700" />
+            {/* Card 3: Jam Operasional */}
+            <div className="sipelita-card">
+              <div>
+                <div className="sipelita-card-icon">
+                  <Clock3 size={22} />
                 </div>
-                <span className="block text-xs font-bold text-emerald-800 uppercase tracking-wider">
-                  JAM OPERASIONAL
-                </span>
-                <h3 className="text-base font-extrabold text-gray-900 leading-snug">
-                  Senin – Jumat
-                </h3>
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  Jam Pelayanan: 08.00 – 16.00 WITA
-                </p>
+                <span className="sipelita-card-label">JAM OPERASIONAL</span>
+                <h3 className="sipelita-card-heading">Senin – Jumat</h3>
+                <p className="sipelita-card-desc">Jam Pelayanan: 08.00 – 16.00 WITA</p>
               </div>
-              <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full w-max">
+              <span
+                style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  color: "#0d7a5f",
+                  backgroundColor: "#e6f4ee",
+                  padding: "6px 12px",
+                  borderRadius: 999,
+                  width: "max-content",
+                }}
+              >
                 Pelayanan Buka
               </span>
             </div>
