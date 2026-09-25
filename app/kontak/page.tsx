@@ -8,6 +8,7 @@ import {
   ExternalLink,
   Heart,
   Building2,
+  Mail, // Tambahan icon email
 } from "lucide-react";
 
 export default function Kontak() {
@@ -17,6 +18,11 @@ export default function Kontak() {
     "Halo SIPELITA, saya ingin bertanya mengenai layanan Puskesmas Tarailu Sampaga."
   );
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+  // Format link untuk Email (mailto)
+  const emailAddress = "pkmsatelittarailu@gmail.com";
+  const emailSubject = encodeURIComponent("Pertanyaan Layanan Puskesmas Tarailu");
+  const emailUrl = `mailto:${emailAddress}?subject=${emailSubject}`;
 
   // Tautan Google Maps ke Puskesmas Satelit Tarailu
   const googleMapsUrl =
@@ -67,6 +73,7 @@ export default function Kontak() {
           align-items: center;
           justify-content: center;
           color: #0d7a5f;
+          flex-shrink: 0;
         }
 
         .sipelita-logo-title {
@@ -116,6 +123,7 @@ export default function Kontak() {
           transition: all 0.2s;
           display: inline-flex;
           align-items: center;
+          white-space: nowrap;
         }
 
         .sipelita-btn-outline:hover {
@@ -136,19 +144,6 @@ export default function Kontak() {
           gap: 48px;
           align-items: center;
           margin-bottom: 64px;
-        }
-
-        @media (max-width: 900px) {
-          .sipelita-hero {
-            grid-template-columns: 1fr;
-            gap: 40px;
-          }
-          .sipelita-nav {
-            display: none;
-          }
-          .sipelita-header {
-            padding: 16px 20px;
-          }
         }
 
         .sipelita-eyebrow {
@@ -199,6 +194,7 @@ export default function Kontak() {
           text-decoration: none;
           display: inline-flex;
           align-items: center;
+          justify-content: center;
           gap: 8px;
           transition: all 0.2s;
           box-shadow: 0 4px 12px rgba(13, 122, 95, 0.25);
@@ -217,6 +213,7 @@ export default function Kontak() {
           text-decoration: none;
           display: inline-flex;
           align-items: center;
+          justify-content: center;
           gap: 6px;
           padding: 12px 16px;
           border-radius: 12px;
@@ -304,16 +301,11 @@ export default function Kontak() {
           letter-spacing: -0.5px;
         }
 
+        /* Update Grid for 4 cards (2 rows on desktop, 1 col on mobile) */
         .sipelita-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(4, 1fr);
           gap: 24px;
-        }
-
-        @media (max-width: 850px) {
-          .sipelita-grid {
-            grid-template-columns: 1fr;
-          }
         }
 
         .sipelita-card {
@@ -369,6 +361,7 @@ export default function Kontak() {
           font-weight: 800;
           color: #111827;
           margin: 6px 0;
+          word-break: break-word;
         }
 
         .sipelita-card-desc {
@@ -391,6 +384,63 @@ export default function Kontak() {
 
         .sipelita-card-action:hover {
           text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVE MEDIA QUERIES ===== */
+        @media (max-width: 1024px) {
+          .sipelita-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .sipelita-hero-title {
+            font-size: 40px;
+          }
+          .sipelita-circle-bg {
+            width: 280px;
+            height: 280px;
+          }
+          .sipelita-circle-inner {
+            width: 200px;
+            height: 200px;
+          }
+        }
+
+        @media (max-width: 900px) {
+          .sipelita-hero {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            text-align: center;
+          }
+          .sipelita-hero-desc {
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .sipelita-btn-group {
+            justify-content: center;
+          }
+          .sipelita-nav {
+            display: none;
+          }
+          .sipelita-header {
+            padding: 16px 20px;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .sipelita-grid {
+            grid-template-columns: 1fr;
+          }
+          .sipelita-hero-title {
+            font-size: 32px;
+          }
+          .sipelita-section-title {
+            font-size: 24px;
+          }
+          .sipelita-main {
+            padding: 32px 16px 60px 16px;
+          }
+          .sipelita-btn-primary, .sipelita-btn-link {
+            width: 100%;
+          }
         }
       `}</style>
 
@@ -502,6 +552,7 @@ export default function Kontak() {
             </h2>
           </div>
 
+          {/* Grid Informasi Kontak (kini 4 kartu) */}
           <div className="sipelita-grid">
             {/* Card 1: Lokasi */}
             <div className="sipelita-card sipelita-card-accent">
@@ -549,7 +600,29 @@ export default function Kontak() {
               </a>
             </div>
 
-            {/* Card 3: Jam Operasional */}
+            {/* Card 3: Email (Baru Ditambahkan) */}
+            <div className="sipelita-card">
+              <div>
+                <div className="sipelita-card-icon">
+                  <Mail size={22} />
+                </div>
+                <span className="sipelita-card-label">EMAIL RESMI</span>
+                <h3 className="sipelita-card-heading" style={{ fontSize: "16px" }}>
+                  pkmsatelittarailu<br/>@gmail.com
+                </h3>
+                <p className="sipelita-card-desc">
+                  Kirimkan pertanyaan, saran, atau keluhan melalui email resmi kami.
+                </p>
+              </div>
+              <a
+                href={emailUrl}
+                className="sipelita-card-action"
+              >
+                Kirim Email Sekarang <ArrowRight size={14} />
+              </a>
+            </div>
+
+            {/* Card 4: Jam Operasional */}
             <div className="sipelita-card">
               <div>
                 <div className="sipelita-card-icon">
