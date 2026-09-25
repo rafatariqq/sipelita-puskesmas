@@ -1,11 +1,22 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "SIPELITA | Portal Layanan Puskesmas",
-  description: "Sistem Pelayanan Terintegrasi Puskesmas"
+  title: "Puskesmas Tarailu Sampaga",
+  description: "Portal Informasi Puskesmas Tarailu Sampaga",
 };
 
-export default function RootLayout({children}:{children:React.ReactNode}) {
-  return <html lang="id"><body>{children}</body></html>;
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="id">
+      <body>
+        {children}
+      </body>
+    </html>
+  );
 }
