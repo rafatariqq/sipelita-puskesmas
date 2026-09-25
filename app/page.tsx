@@ -1,458 +1,520 @@
+"use client";
+
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  CalendarDays,
-  ChevronRight,
-  Clock3,
-  FileText,
-  HeartPulse,
-  Hospital,
-  Info,
-  MapPin,
-  MessageSquare,
-  ShieldCheck,
-  Users,
   Building2,
+  CheckCircle2,
+  ChevronRight,
+  HeartPulse,
+  MapPin,
+  Users,
 } from "lucide-react";
 
-const services = [
-  {
-    title: "Klaster 1",
-    subtitle: "Manajemen",
-    description:
-      "Pengelolaan administrasi, informasi, mutu, dan sistem pelayanan Puskesmas.",
-    icon: Building2,
-  },
-  {
-    title: "Klaster 2",
-    subtitle: "Ibu dan Anak",
-    description:
-      "Pelayanan kesehatan bagi ibu, bayi, balita, anak, dan remaja.",
-    icon: HeartPulse,
-  },
-  {
-    title: "Klaster 3",
-    subtitle: "Usia Dewasa dan Lansia",
-    description:
-      "Pelayanan kesehatan untuk masyarakat usia dewasa hingga lanjut usia.",
-    icon: Users,
-  },
-  {
-    title: "Klaster 4",
-    subtitle: "Penanggulangan Penyakit Menular",
-    description:
-      "Upaya pencegahan, pemantauan, dan pengendalian penyakit menular.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Lintas Klaster",
-    subtitle: "Pelayanan Pendukung",
-    description:
-      "Pelayanan yang mendukung kebutuhan kesehatan lintas kelompok dan kondisi khusus.",
-    icon: Hospital,
-  },
-];
-
-const announcements = [
-  {
-    date: "17 SEP 2026",
-    title: "Informasi pelayanan Puskesmas",
-    description:
-      "Dapatkan informasi terbaru mengenai pelayanan dan kegiatan Puskesmas Tarailu Sampaga.",
-  },
-  {
-    date: "15 SEP 2026",
-    title: "Informasi persyaratan pelayanan",
-    description:
-      "Periksa dokumen dan persyaratan yang perlu disiapkan sebelum mendapatkan pelayanan.",
-  },
-  {
-    date: "12 SEP 2026",
-    title: "Kegiatan kesehatan masyarakat",
-    description:
-      "Ikuti informasi kegiatan kesehatan dan penyuluhan yang dilaksanakan oleh Puskesmas.",
-  },
-];
-
-export default function Home() {
+export default function ProfilPage() {
   return (
-    <main>
-      {/* NAVBAR */}
-      <header className="nav">
-        <Link href="/" className="brand" aria-label="Puskesmas Tarailu Sampaga">
-          <div className="logo">
-            <HeartPulse size={22} />
+    <main className="profilePage">
+
+      {/* =========================
+          HEADER
+      ========================= */}
+      <header className="profileHeader">
+
+        <Link href="/" className="profileBrand">
+          <div className="profileBrandLogo">
+            <Image
+              src="/logo-puskesmas.png"
+              alt="Logo Puskesmas Tarailu Sampaga"
+              width={42}
+              height={42}
+            />
           </div>
 
           <div>
-            <b>PUSKESMAS TARAILU</b>
+            <strong>PUSKESMAS TARAILU</strong>
             <span>SAMPAGA · Portal Informasi</span>
           </div>
         </Link>
 
-        <nav>
+        <nav className="profileNav">
           <Link href="/">Beranda</Link>
-          <Link href="/profil">Profil</Link>
+          <Link href="/profil" className="active">
+            Profil
+          </Link>
           <Link href="/layanan">Layanan</Link>
           <Link href="/persyaratan">Persyaratan</Link>
-          <Link href="#jadwal">Jadwal</Link>
-          <Link href="#informasi">Informasi</Link>
+          <Link href="/jadwal">Jadwal</Link>
+          <Link href="/informasi">Informasi</Link>
         </nav>
 
-        <Link className="navContact" href="/kontak">
-          Kontak
+        <Link href="/kontak" className="profileContactButton">
+          Hubungi Kami
         </Link>
+
       </header>
 
-      {/* HERO */}
-      <section className="hero">
-        <div className="heroText">
-          <div className="pill">
-            <Hospital size={16} />
-            Pelayanan kesehatan masyarakat
+
+      {/* =========================
+          HERO PROFIL
+      ========================= */}
+      <section className="profileHero">
+
+        <div className="profileHeroInner">
+
+          <div className="profileHeroText">
+
+            <span className="profileEyebrow">
+              PROFIL PUSKESMAS
+            </span>
+
+            <h1>
+              Mengenal
+              <br />
+              <em>Puskesmas Tarailu Sampaga.</em>
+            </h1>
+
+            <p>
+              Informasi mengenai profil, arah pelayanan, organisasi,
+              dan sumber daya pelayanan kesehatan Puskesmas Tarailu Sampaga.
+            </p>
+
+            <div className="profileHeroActions">
+              <a href="#tentang" className="profilePrimaryButton">
+                Tentang Puskesmas
+                <ArrowRight size={17} />
+              </a>
+
+              <a href="#struktur" className="profileSecondaryButton">
+                Lihat Struktur
+              </a>
+            </div>
+
           </div>
 
-          <h1>
+
+          <div className="profileHeroVisual">
+
+            <div className="profileLogoCircle">
+              <Image
+                src="/logo-puskesmas.png"
+                alt="Logo Puskesmas Tarailu Sampaga"
+                width={150}
+                height={150}
+              />
+            </div>
+
+            <div className="profileFloatingCard">
+              <HeartPulse size={20} />
+              <div>
+                <strong>Pelayanan Kesehatan</strong>
+                <span>Untuk masyarakat</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================
+          TENTANG
+      ========================= */}
+      <section className="profileSection" id="tentang">
+
+        <div className="profileSectionHeading">
+          <span className="profileEyebrow">
+            TENTANG PUSKESMAS
+          </span>
+
+          <h2>
             Pelayanan kesehatan
             <br />
-            <em>lebih mudah</em> diakses.
-          </h1>
+            untuk masyarakat.
+          </h2>
+        </div>
+
+
+        <div className="aboutGrid">
+
+          <div className="aboutMainCard">
+
+            <div className="aboutIcon">
+              <Building2 size={25} />
+            </div>
+
+            <span className="aboutNumber">01</span>
+
+            <h3>Puskesmas Tarailu Sampaga</h3>
+
+            <p>
+              Puskesmas Tarailu Sampaga merupakan fasilitas pelayanan
+              kesehatan yang memberikan pelayanan kesehatan kepada
+              masyarakat di wilayah Kecamatan Sampaga dan sekitarnya.
+            </p>
+
+            <p>
+              Portal ini dibuat untuk membantu masyarakat memperoleh
+              informasi mengenai layanan, persyaratan, jadwal,
+              informasi kegiatan, serta kontak Puskesmas dengan
+              lebih mudah.
+            </p>
+
+          </div>
+
+
+          <div className="aboutSide">
+
+            <div className="aboutSmallCard">
+              <div className="aboutSmallIcon">
+                <MapPin size={20} />
+              </div>
+
+              <div>
+                <span>LOKASI</span>
+                <strong>
+                  Desa Tarailu, Kecamatan Sampaga
+                </strong>
+              </div>
+            </div>
+
+
+            <div className="aboutSmallCard">
+              <div className="aboutSmallIcon">
+                <Users size={20} />
+              </div>
+
+              <div>
+                <span>FOKUS PELAYANAN</span>
+                <strong>
+                  Kesehatan masyarakat
+                </strong>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================
+          VISI MISI
+      ========================= */}
+      <section className="visionSection">
+
+        <div className="visionHeader">
+          <span className="profileEyebrow">
+            ARAH PELAYANAN
+          </span>
+
+          <h2>
+            Visi & Misi
+          </h2>
 
           <p>
-            Selamat datang di portal informasi Puskesmas Tarailu Sampaga.
-            Temukan layanan, persyaratan, jadwal, informasi, dan kontak
-            Puskesmas dalam satu tempat.
+            Informasi mengenai arah dan tujuan pelayanan Puskesmas.
           </p>
-
-          <div className="actions">
-            <Link className="primary" href="#layanan">
-              Jelajahi Layanan <ArrowRight size={18} />
-            </Link>
-
-            <Link className="secondary" href="/kontak">
-              Hubungi Kami
-            </Link>
-          </div>
-
-          <div className="heroNote">
-            <span className="noteDot" />
-            Informasi resmi untuk masyarakat
-          </div>
         </div>
 
-        <div className="heroVisual">
-          <div className="visualGlow" />
 
-          <div className="healthCard">
-            <div className="healthCardTop">
-              <div className="healthIcon">
-                <HeartPulse size={25} />
-              </div>
+        <div className="visionGrid">
 
-              <span>LAYANAN KESEHATAN</span>
+          <div className="visionCard visionMain">
+
+            <span className="visionLabel">
+              VISI
+            </span>
+
+            <div className="visionQuote">
+              <span>“</span>
+
+              <p>
+                Pelayanan kesehatan masyarakat yang mudah
+                diakses, berkualitas, dan berorientasi pada
+                kebutuhan masyarakat.
+              </p>
             </div>
 
-            <div className="healthIllustration">
-              <div className="cross crossOne">+</div>
-              <div className="cross crossTwo">+</div>
+          </div>
 
-              <div className="circlePulse">
-                <HeartPulse size={54} />
-              </div>
-            </div>
 
-            <div className="healthCardBottom">
+          <div className="visionCard">
+
+            <span className="visionLabel">
+              MISI
+            </span>
+
+            <div className="missionList">
+
               <div>
-                <small>Fasilitas</small>
-                <strong>Puskesmas Tarailu</strong>
+                <CheckCircle2 size={18} />
+                <span>
+                  Memberikan pelayanan kesehatan yang
+                  mudah diakses masyarakat.
+                </span>
               </div>
 
-              <div className="openBadge">
-                <span />
-                Pelayanan
+              <div>
+                <CheckCircle2 size={18} />
+                <span>
+                  Mendukung peningkatan kualitas kesehatan
+                  masyarakat.
+                </span>
               </div>
+
+              <div>
+                <CheckCircle2 size={18} />
+                <span>
+                  Mengembangkan pelayanan yang berorientasi
+                  pada kebutuhan masyarakat.
+                </span>
+              </div>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
-      {/* QUICK INFO */}
-      <section className="quickInfo">
-        <div className="quickItem">
-          <div className="quickIcon">
-            <Info size={21} />
-          </div>
+
+      {/* =========================
+          STRUKTUR ORGANISASI
+      ========================= */}
+      <section className="structureSection" id="struktur">
+
+        <div className="structureHeader">
 
           <div>
-            <strong>Informasi Terpusat</strong>
-            <span>
-              Layanan dan informasi Puskesmas dalam satu portal.
+            <span className="profileEyebrow">
+              STRUKTUR ORGANISASI
             </span>
-          </div>
-        </div>
-
-        <div className="quickItem">
-          <div className="quickIcon">
-            <FileText size={21} />
-          </div>
-
-          <div>
-            <strong>Persyaratan Jelas</strong>
-            <span>
-              Ketahui dokumen yang perlu disiapkan sebelum pelayanan.
-            </span>
-          </div>
-        </div>
-
-        <div className="quickItem">
-          <div className="quickIcon">
-            <MessageSquare size={21} />
-          </div>
-
-          <div>
-            <strong>Pengaduan Masyarakat</strong>
-            <span>
-              Sampaikan kritik, saran, dan masukan kepada kami.
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* LAYANAN */}
-      <section className="section" id="layanan">
-        <div className="sectionHead">
-          <div>
-            <span className="eyebrow">LAYANAN PUSKESMAS</span>
 
             <h2>
-              Temukan layanan
+              Struktur Puskesmas
               <br />
-              yang Anda butuhkan.
+              Tarailu Sampaga.
             </h2>
           </div>
 
           <p>
-            Pilih klaster untuk mendapatkan informasi mengenai kelompok
-            pelayanan kesehatan yang tersedia di Puskesmas Tarailu Sampaga.
-          </p>
-        </div>
-
-        <div className="serviceGrid">
-          {services.map(
-            ({ title, subtitle, description, icon: Icon }) => (
-              <Link
-                className="service"
-                href="/layanan"
-                key={title}
-              >
-                <div className="icon">
-                  <Icon size={23} />
-                </div>
-
-                <h3>{title}</h3>
-
-                <strong
-                  style={{
-                    display: "block",
-                    marginTop: "4px",
-                    marginBottom: "10px",
-                    fontSize: "15px",
-                  }}
-                >
-                  {subtitle}
-                </strong>
-
-                <p>{description}</p>
-
-                <span>
-                  Lihat detail <ArrowRight size={16} />
-                </span>
-              </Link>
-            )
-          )}
-        </div>
-      </section>
-
-      {/* PERSYARATAN */}
-      <section className="splitBand" id="persyaratan">
-        <div className="splitContent">
-          <span className="eyebrow">PERSYARATAN PELAYANAN</span>
-
-          <h2>Siapkan dokumen sebelum datang.</h2>
-
-          <p>
-            Periksa persyaratan pelayanan terlebih dahulu agar proses
-            administrasi dapat dilakukan dengan lebih mudah.
+            Struktur organisasi Puskesmas Tarailu Sampaga
+            beserta pembagian kelompok pelayanan berdasarkan
+            klaster.
           </p>
 
-          <Link className="whiteBtn" href="/persyaratan">
-            Lihat Persyaratan <ArrowRight size={17} />
-          </Link>
         </div>
 
-        <div className="requirementCard">
-          <div className="requirementIcon">
-            <FileText size={24} />
+
+        <div className="structureCard">
+
+          <div className="structureCardTop">
+
+            <div className="structureIcon">
+              <Building2 size={23} />
+            </div>
+
+            <div>
+              <strong>
+                Struktur Organisasi UPTD Puskesmas Tarailu
+              </strong>
+
+              <span>
+                Susunan organisasi dan pembagian pelayanan
+              </span>
+            </div>
+
           </div>
 
-          <div>
-            <strong>Dokumen pelayanan</strong>
+
+          <div className="structureImageWrapper">
+
+            <Image
+              src="/struktur-organisasi.png"
+              alt="Struktur Organisasi UPTD Puskesmas Tarailu"
+              width={1600}
+              height={950}
+              className="structureImage"
+            />
+
+          </div>
+
+          <div className="structureNote">
+            <span>ℹ</span>
 
             <p>
-              Informasi persyaratan dapat berbeda sesuai dengan jenis layanan.
+              Struktur organisasi ditampilkan berdasarkan
+              dokumen struktur organisasi Puskesmas Tarailu
+              yang tersedia.
             </p>
           </div>
 
-          <ChevronRight size={20} />
         </div>
+
       </section>
 
-      {/* JADWAL */}
-      <section className="section scheduleSection" id="jadwal">
-        <div className="sectionHead">
-          <div>
-            <span className="eyebrow">JADWAL PELAYANAN</span>
-            <h2>Ketahui waktu pelayanan.</h2>
-          </div>
 
-          <Link className="textLink" href="/jadwal">
-            Lihat jadwal lengkap <ArrowRight size={16} />
-          </Link>
-        </div>
+      {/* =========================
+          KLASTER PELAYANAN
+      ========================= */}
+      <section className="clusterSection">
 
-        <div className="scheduleGrid">
-          <div className="scheduleMain">
-            <div className="scheduleIcon">
-              <CalendarDays size={25} />
-            </div>
+        <div className="clusterHeader">
 
-            <div>
-              <span>JAM OPERASIONAL</span>
-              <strong>Senin – Jumat</strong>
-              <p>08.00 – 16.00</p>
-            </div>
-          </div>
+          <span className="profileEyebrow">
+            KELOMPOK PELAYANAN
+          </span>
 
-          <div className="scheduleSmall">
-            <Clock3 size={21} />
-
-            <div>
-              <strong>Jadwal dapat berubah</strong>
-              <p>Periksa informasi terbaru sebelum berkunjung.</p>
-            </div>
-          </div>
-
-          <div className="scheduleSmall">
-            <MapPin size={21} />
-
-            <div>
-              <strong>Lokasi Puskesmas</strong>
-              <p>
-                Tarailu, Kecamatan Sampaga, Kabupaten Mamuju.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* INFORMASI */}
-      <section className="section news" id="informasi">
-        <div className="sectionHead">
-          <div>
-            <span className="eyebrow">INFORMASI TERBARU</span>
-            <h2>Berita & pengumuman.</h2>
-          </div>
-
-          <Link className="textLink" href="/informasi">
-            Semua informasi <ArrowRight size={16} />
-          </Link>
-        </div>
-
-        <div className="newsGrid">
-          {announcements.map((item) => (
-            <article key={item.title}>
-              <span>{item.date}</span>
-
-              <h3>{item.title}</h3>
-
-              <p>{item.description}</p>
-
-              <Link href="/informasi">
-                Baca selengkapnya <ArrowRight size={15} />
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* PROFIL */}
-      <section className="profileBand" id="profil">
-        <div className="profileVisual">
-          <div className="profileSquare">
-            <Hospital size={55} />
-          </div>
-        </div>
-
-        <div className="profileText">
-          <span className="eyebrow">PROFIL PUSKESMAS</span>
-
-          <h2>Puskesmas Tarailu Sampaga</h2>
+          <h2>
+            Pelayanan berdasarkan klaster.
+          </h2>
 
           <p>
-            Puskesmas Tarailu Sampaga hadir sebagai bagian dari pelayanan
-            kesehatan masyarakat di wilayah Sampaga. Portal ini menyediakan
-            informasi publik mengenai layanan, jadwal, persyaratan, kegiatan,
-            dan kontak Puskesmas.
+            Pelayanan Puskesmas dikelompokkan untuk memudahkan
+            masyarakat memahami jenis pelayanan yang tersedia.
           </p>
 
-          <div className="profileLinks">
-            <Link href="/profil">
-              Tentang Puskesmas <ArrowRight size={16} />
-            </Link>
+        </div>
 
-            <Link href="/profil#struktur">
-              Struktur Organisasi <ArrowRight size={16} />
+
+        <div className="clusterGrid">
+
+          <div className="clusterCard">
+            <span>01</span>
+            <h3>Klaster 1</h3>
+            <strong>Manajemen</strong>
+            <p>
+              Pengelolaan administrasi, informasi, mutu,
+              dan koordinasi pelayanan Puskesmas.
+            </p>
+            <Link href="/layanan">
+              Lihat layanan <ChevronRight size={16} />
             </Link>
           </div>
+
+
+          <div className="clusterCard">
+            <span>02</span>
+            <h3>Klaster 2</h3>
+            <strong>Ibu dan Anak</strong>
+            <p>
+              Pelayanan kesehatan bagi ibu, bayi, balita,
+              anak, dan remaja.
+            </p>
+            <Link href="/layanan">
+              Lihat layanan <ChevronRight size={16} />
+            </Link>
+          </div>
+
+
+          <div className="clusterCard">
+            <span>03</span>
+            <h3>Klaster 3</h3>
+            <strong>Dewasa dan Lansia</strong>
+            <p>
+              Pelayanan kesehatan untuk usia dewasa
+              hingga lanjut usia.
+            </p>
+            <Link href="/layanan">
+              Lihat layanan <ChevronRight size={16} />
+            </Link>
+          </div>
+
+
+          <div className="clusterCard">
+            <span>04</span>
+            <h3>Klaster 4</h3>
+            <strong>Penyakit Menular</strong>
+            <p>
+              Pencegahan, pemantauan, dan pengendalian
+              penyakit menular.
+            </p>
+            <Link href="/layanan">
+              Lihat layanan <ChevronRight size={16} />
+            </Link>
+          </div>
+
+
+          <div className="clusterCard">
+            <span>05</span>
+            <h3>Lintas Klaster</h3>
+            <strong>Pelayanan Pendukung</strong>
+            <p>
+              Pelayanan pendukung untuk kebutuhan
+              kesehatan lintas kelompok.
+            </p>
+            <Link href="/layanan">
+              Lihat layanan <ChevronRight size={16} />
+            </Link>
+          </div>
+
         </div>
+
       </section>
 
-      {/* CONTACT CTA */}
-      <section className="contactCta">
+
+      {/* =========================
+          CONTACT CTA
+      ========================= */}
+      <section className="profileCta">
+
         <div>
-          <span className="eyebrow">BUTUH INFORMASI?</span>
+          <span className="profileEyebrow">
+            INFORMASI LEBIH LANJUT
+          </span>
 
-          <h2>Hubungi Puskesmas Tarailu Sampaga.</h2>
+          <h2>
+            Butuh informasi Puskesmas?
+          </h2>
 
           <p>
-            Gunakan halaman kontak untuk melihat alamat, nomor yang dapat
-            dihubungi, jam pelayanan, dan lokasi Puskesmas.
+            Lihat alamat, nomor kontak, email, dan informasi
+            lokasi Puskesmas Tarailu Sampaga.
           </p>
         </div>
 
-        <Link className="primary" href="/kontak">
-          Buka Halaman Kontak <ArrowRight size={18} />
+        <Link href="/kontak" className="profileCtaButton">
+          Hubungi Kami
+          <ArrowRight size={18} />
         </Link>
+
       </section>
 
-      {/* FOOTER */}
-      <footer>
-        <div className="footerBrand">
-          <div className="footerLogo">
-            <HeartPulse size={21} />
-          </div>
+
+      {/* =========================
+          FOOTER
+      ========================= */}
+      <footer className="profileFooter">
+
+        <div className="profileFooterBrand">
+
+          <Image
+            src="/logo-puskesmas.png"
+            alt="Logo Puskesmas Tarailu Sampaga"
+            width={42}
+            height={42}
+          />
 
           <div>
-            <b>PUSKESMAS TARAILU SAMPAGA</b>
-            <p>Portal Informasi Pelayanan Kesehatan Masyarakat.</p>
+            <strong>PUSKESMAS TARAILU SAMPAGA</strong>
+            <span>
+              Portal Informasi Pelayanan Kesehatan Masyarakat
+            </span>
           </div>
+
         </div>
 
-        <div className="footerRight">
-          <span>© 2026 Puskesmas Tarailu Sampaga</span>
-          <span>Portal Informasi Publik</span>
-        </div>
+        <span>
+          © 2026 Puskesmas Tarailu Sampaga
+        </span>
+
       </footer>
+
     </main>
   );
 }
