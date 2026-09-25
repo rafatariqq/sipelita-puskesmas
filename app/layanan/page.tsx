@@ -7,410 +7,437 @@ import {
   ArrowRight,
   Baby,
   Building2,
-  ChevronDown,
+  CheckCircle2,
   ChevronRight,
-  ClipboardList,
-  FlaskConical,
   HeartPulse,
   Hospital,
   ShieldCheck,
-  Stethoscope,
-  Syringe,
   UserRound,
-  Users,
-  X,
 } from "lucide-react";
 
-type Cluster = {
-  id: string;
-  number: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  icon: React.ElementType;
-  services: string[];
-};
-
-const clusters: Cluster[] = [
+const clusters = [
   {
-    id: "klaster1",
     number: "01",
-    title: "Manajemen",
-    subtitle: "Klaster 1",
+    title: "Klaster 1",
+    subtitle: "Manajemen",
     description:
-      "Pelayanan dan pengelolaan manajemen Puskesmas untuk mendukung penyelenggaraan pelayanan kesehatan yang terintegrasi.",
+      "Pengelolaan administrasi, informasi, mutu, dan koordinasi pelayanan Puskesmas.",
     icon: Building2,
+    accent: "bg-emerald-50 text-emerald-700",
     services: [
-      "Administrasi & Informasi Puskesmas",
-      "Informasi Pelayanan",
-      "Pengaduan & Masukan Masyarakat",
-      "Pengelolaan Data dan Informasi",
+      {
+        title: "Administrasi & Informasi Puskesmas",
+        description:
+          "Informasi mengenai administrasi dan pelayanan yang tersedia di Puskesmas.",
+      },
+      {
+        title: "Pengelolaan Data dan Informasi",
+        description:
+          "Pengelolaan informasi untuk mendukung pelayanan dan kegiatan Puskesmas.",
+      },
+      {
+        title: "Informasi Pelayanan",
+        description:
+          "Informasi mengenai jenis pelayanan, jadwal, dan kebutuhan pelayanan.",
+      },
+      {
+        title: "Pengaduan & Masukan Masyarakat",
+        description:
+          "Sarana untuk menyampaikan kritik, saran, dan masukan dari masyarakat.",
+      },
     ],
   },
+
   {
-    id: "klaster2",
     number: "02",
-    title: "Ibu & Anak",
-    subtitle: "Klaster 2",
+    title: "Klaster 2",
+    subtitle: "Ibu dan Anak",
     description:
-      "Pelayanan kesehatan yang berfokus pada ibu, bayi, balita, anak, dan remaja sesuai kebutuhan.",
+      "Pelayanan kesehatan bagi ibu, bayi, balita, anak, dan remaja.",
     icon: Baby,
+    accent: "bg-pink-50 text-pink-700",
     services: [
-      "Pelayanan Kesehatan Ibu",
-      "Pelayanan Bayi & Balita",
-      "Imunisasi",
-      "Kesehatan Anak & Remaja",
+      {
+        title: "Pelayanan Kesehatan Ibu",
+        description:
+          "Pelayanan kesehatan yang berkaitan dengan kebutuhan kesehatan ibu.",
+      },
+      {
+        title: "Pelayanan Bayi & Balita",
+        description:
+          "Pelayanan kesehatan untuk mendukung tumbuh kembang bayi dan balita.",
+      },
+      {
+        title: "Imunisasi",
+        description:
+          "Pelayanan imunisasi sesuai dengan kebutuhan dan jadwal yang berlaku.",
+      },
+      {
+        title: "Kesehatan Anak & Remaja",
+        description:
+          "Pelayanan kesehatan yang mendukung kesehatan anak dan remaja.",
+      },
     ],
   },
+
   {
-    id: "klaster3",
     number: "03",
-    title: "Dewasa & Lansia",
-    subtitle: "Klaster 3",
+    title: "Klaster 3",
+    subtitle: "Usia Dewasa & Lansia",
     description:
-      "Pelayanan kesehatan bagi usia dewasa, usia produktif, dan lanjut usia untuk mendukung kesehatan sepanjang kehidupan.",
+      "Pelayanan kesehatan untuk masyarakat usia dewasa hingga lanjut usia.",
     icon: UserRound,
+    accent: "bg-blue-50 text-blue-700",
     services: [
-      "Pelayanan Kesehatan Dewasa",
-      "Pelayanan Kesehatan Lansia",
-      "Skrining Kesehatan",
-      "Pemantauan Faktor Risiko",
+      {
+        title: "Pelayanan Kesehatan Dewasa",
+        description:
+          "Pelayanan kesehatan untuk memenuhi kebutuhan masyarakat usia dewasa.",
+      },
+      {
+        title: "Pelayanan Kesehatan Lansia",
+        description:
+          "Pelayanan kesehatan yang mendukung kesehatan dan kebutuhan lanjut usia.",
+      },
+      {
+        title: "Skrining Kesehatan",
+        description:
+          "Pelayanan pemeriksaan awal untuk membantu mengenali kondisi dan faktor risiko kesehatan.",
+      },
+      {
+        title: "Pemantauan Faktor Risiko",
+        description:
+          "Pemantauan berbagai faktor yang dapat memengaruhi kondisi kesehatan.",
+      },
     ],
   },
+
   {
-    id: "klaster4",
     number: "04",
-    title: "Penyakit Menular",
-    subtitle: "Klaster 4",
+    title: "Klaster 4",
+    subtitle: "Penanggulangan Penyakit Menular",
     description:
-      "Kegiatan pencegahan, surveilans, pengendalian, dan penanggulangan penyakit menular di wilayah kerja Puskesmas.",
+      "Upaya pencegahan, pemantauan, dan pengendalian penyakit menular.",
     icon: ShieldCheck,
+    accent: "bg-amber-50 text-amber-700",
     services: [
-      "Pencegahan & Pengendalian Penyakit Menular",
-      "Surveilans Penyakit",
-      "Penanggulangan Kejadian Penyakit",
-      "Kesehatan Lingkungan",
+      {
+        title: "Pencegahan & Pengendalian Penyakit Menular",
+        description:
+          "Upaya untuk mencegah dan mengendalikan penyebaran penyakit menular.",
+      },
+      {
+        title: "Surveilans Penyakit",
+        description:
+          "Pemantauan kondisi dan perkembangan penyakit di masyarakat.",
+      },
+      {
+        title: "Penanggulangan Kejadian Penyakit",
+        description:
+          "Upaya penanganan terhadap kejadian penyakit yang membutuhkan perhatian.",
+      },
+      {
+        title: "Kesehatan Lingkungan",
+        description:
+          "Upaya menjaga lingkungan agar mendukung kesehatan masyarakat.",
+      },
     ],
   },
+
   {
-    id: "lintas",
     number: "05",
     title: "Lintas Klaster",
     subtitle: "Pelayanan Pendukung",
     description:
-      "Pelayanan pendukung yang dapat digunakan untuk menunjang kebutuhan masyarakat dari berbagai kelompok pelayanan.",
+      "Pelayanan yang mendukung kebutuhan kesehatan lintas kelompok dan kondisi khusus.",
     icon: Hospital,
+    accent: "bg-violet-50 text-violet-700",
     services: [
-      "Pelayanan Kegawatdaruratan",
-      "Laboratorium",
-      "Kefarmasian",
-      "Pelayanan Gigi & Mulut",
+      {
+        title: "Pelayanan Kegawatdaruratan",
+        description:
+          "Pelayanan untuk kondisi kesehatan yang membutuhkan penanganan segera.",
+      },
+      {
+        title: "Laboratorium",
+        description:
+          "Pelayanan pemeriksaan laboratorium untuk mendukung kebutuhan pelayanan kesehatan.",
+      },
+      {
+        title: "Kefarmasian",
+        description:
+          "Pelayanan terkait obat dan informasi penggunaannya.",
+      },
+      {
+        title: "Pelayanan Gigi & Mulut",
+        description:
+          "Pelayanan kesehatan yang berkaitan dengan gigi dan kesehatan mulut.",
+      },
     ],
   },
 ];
 
-const iconList = [
-  Stethoscope,
-  HeartPulse,
-  Syringe,
-  FlaskConical,
-  ClipboardList,
-  Users,
-];
-
 export default function LayananPage() {
-  const [selectedCluster, setSelectedCluster] =
-    useState<Cluster | null>(null);
+  const [selectedCluster, setSelectedCluster] = useState<
+    (typeof clusters)[number] | null
+  >(null);
 
   return (
-    <main className="min-h-screen bg-[#f7faf8] text-slate-800">
-      {/* =====================================================
-          HERO
-      ===================================================== */}
-      <section className="relative overflow-hidden bg-white">
-        {/* Background decoration */}
-        <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-emerald-100/60 blur-3xl" />
-        <div className="absolute -bottom-40 -left-20 h-80 w-80 rounded-full bg-teal-100/50 blur-3xl" />
-
-        <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-8 sm:pt-10 lg:px-8 lg:pb-20">
+    <main className="min-h-screen bg-[#f7faf8] text-slate-900">
+      {/* HEADER */}
+      <header className="border-b border-slate-200 bg-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
           <Link
             href="/"
-            className="mb-10 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-emerald-600"
+            className="flex items-center gap-3"
+          >
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-sm">
+              <HeartPulse size={23} />
+            </div>
+
+            <div>
+              <div className="text-sm font-bold tracking-wide text-slate-900">
+                PUSKESMAS TARAILU
+              </div>
+              <div className="text-xs text-slate-500">
+                SAMPAGA · Portal Informasi
+              </div>
+            </div>
+          </Link>
+
+          <Link
+            href="/"
+            className="hidden items-center gap-2 text-sm font-medium text-slate-600 transition hover:text-emerald-700 sm:flex"
           >
             <ArrowLeft size={16} />
             Kembali ke Beranda
           </Link>
+        </div>
+      </header>
 
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-emerald-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-emerald-700">
-              <span className="h-2 w-2 rounded-full bg-emerald-500" />
-              Pelayanan Kesehatan Primer
-            </div>
-
-            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-              Layanan Puskesmas
-            </h1>
-
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-500 sm:text-lg">
-              Jelajahi berbagai layanan kesehatan Puskesmas
-              Tarailu Sampaga berdasarkan kelompok Integrasi
-              Pelayanan Kesehatan Primer.
-            </p>
+      {/* HERO */}
+      <section className="mx-auto max-w-7xl px-6 pb-12 pt-14 lg:px-8 lg:pt-20">
+        <div className="max-w-3xl">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-xs font-bold tracking-widest text-emerald-700">
+            <Hospital size={15} />
+            LAYANAN PUSKESMAS
           </div>
+
+          <h1 className="text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+            Pelayanan kesehatan
+            <br />
+            <span className="text-emerald-700">
+              dalam satu tempat.
+            </span>
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
+            Kenali kelompok pelayanan kesehatan di Puskesmas Tarailu
+            Sampaga. Pilih klaster untuk melihat layanan yang tersedia
+            di dalamnya.
+          </p>
         </div>
       </section>
 
-      {/* =====================================================
-          SERVICE SECTION
-      ===================================================== */}
-      <section className="mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-16">
-        {/* Section heading */}
-        <div className="mb-10 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-600">
-            Kelompok Pelayanan
-          </p>
-
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Temukan Layanan yang Kamu Butuhkan
-          </h2>
-
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-500">
-            Pilih salah satu kelompok pelayanan untuk melihat
-            jenis layanan yang tersedia.
-          </p>
-        </div>
-
-        {/* =====================================================
-            5 CLUSTER CARDS
-        ===================================================== */}
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {clusters.map((cluster, index) => {
+      {/* CLUSTER LIST */}
+      <section className="mx-auto max-w-7xl px-6 pb-20 lg:px-8">
+        <div className="grid gap-5 md:grid-cols-2">
+          {clusters.map((cluster) => {
             const Icon = cluster.icon;
 
-            /*
-             * Card terakhir dibuat sedikit lebih lebar
-             * pada desktop supaya layout terlihat seimbang.
-             */
-            const isLast = index === clusters.length - 1;
-
             return (
-              <article
-                key={cluster.id}
-                className={`group relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-slate-200/60 ${
-                  isLast ? "lg:col-span-1" : ""
-                }`}
+              <div
+                key={cluster.number}
+                className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
-                {/* Decorative number */}
-                <span className="pointer-events-none absolute -right-3 -top-8 text-[110px] font-black leading-none text-slate-50">
+                {/* NUMBER */}
+                <div className="absolute right-6 top-5 text-5xl font-black tracking-tighter text-slate-100">
                   {cluster.number}
-                </span>
-
-                {/* Icon */}
-                <div className="relative flex items-start justify-between">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 transition-all duration-300 group-hover:bg-emerald-600 group-hover:text-white">
-                    <Icon size={27} strokeWidth={1.7} />
-                  </div>
-
-                  <span className="rounded-full bg-slate-50 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                    {cluster.subtitle}
-                  </span>
                 </div>
 
-                {/* Content */}
-                <div className="relative mt-7">
-                  <h3 className="text-2xl font-bold text-slate-900">
-                    {cluster.title}
-                  </h3>
+                {/* ICON */}
+                <div
+                  className={`relative mb-6 flex h-14 w-14 items-center justify-center rounded-2xl ${cluster.accent}`}
+                >
+                  <Icon size={26} />
+                </div>
 
-                  <p className="mt-3 text-sm leading-6 text-slate-500">
+                {/* TITLE */}
+                <div className="relative">
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">
+                    {cluster.title}
+                  </p>
+
+                  <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900">
+                    {cluster.subtitle}
+                  </h2>
+
+                  <p className="mt-3 max-w-lg text-sm leading-6 text-slate-600">
                     {cluster.description}
                   </p>
                 </div>
 
-                {/* Service preview */}
-                <div className="relative mt-6 rounded-2xl bg-slate-50 p-4">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Contoh layanan
-                  </p>
-
-                  <div className="space-y-2">
-                    {cluster.services.slice(0, 2).map((service) => (
-                      <div
-                        key={service}
-                        className="flex items-center gap-2 text-xs font-medium text-slate-600"
-                      >
-                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-[9px] font-bold text-emerald-600">
-                          ✓
-                        </span>
-
-                        <span className="line-clamp-1">
-                          {service}
-                        </span>
-                      </div>
-                    ))}
-
-                    {cluster.services.length > 2 && (
-                      <p className="pt-1 text-[11px] font-medium text-slate-400">
-                        + {cluster.services.length - 2} layanan
-                        lainnya
-                      </p>
-                    )}
+                {/* FOOTER CARD */}
+                <div className="relative mt-7 flex items-center justify-between border-t border-slate-100 pt-5">
+                  <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
+                    <CheckCircle2
+                      size={16}
+                      className="text-emerald-600"
+                    />
+                    {cluster.services.length} layanan
                   </div>
+
+                  <button
+                    onClick={() => setSelectedCluster(cluster)}
+                    className="inline-flex items-center gap-2 text-sm font-bold text-emerald-700 transition group-hover:gap-3 hover:text-emerald-800"
+                  >
+                    Lihat detail
+                    <ArrowRight size={17} />
+                  </button>
                 </div>
-
-                {/* Button */}
-                <button
-                  type="button"
-                  onClick={() => setSelectedCluster(cluster)}
-                  className="relative mt-5 flex w-full items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition-all hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700"
-                >
-                  <span>Lihat Detail Layanan</span>
-
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 transition group-hover:bg-white">
-                    <ChevronRight size={17} />
-                  </span>
-                </button>
-              </article>
+              </div>
             );
           })}
         </div>
+      </section>
 
-        {/* =====================================================
-            INFORMATION BANNER
-        ===================================================== */}
-        <div className="mt-10 overflow-hidden rounded-[1.75rem] bg-emerald-600">
-          <div className="relative px-6 py-8 sm:px-8 lg:px-10">
-            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+      {/* INFORMATION BAND */}
+      <section className="border-y border-emerald-100 bg-emerald-50">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+          <div>
+            <p className="text-sm font-bold text-emerald-700">
+              INFORMASI PELAYANAN
+            </p>
 
-            <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-              <div className="flex items-start gap-4">
-                <div className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white sm:flex">
-                  <HeartPulse size={24} />
-                </div>
+            <h2 className="mt-1 text-xl font-bold text-slate-900">
+              Ingin mengetahui persyaratan sebelum datang?
+            </h2>
 
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-emerald-100">
-                    Informasi Pelayanan
-                  </p>
-
-                  <h3 className="mt-1 text-xl font-bold text-white">
-                    Butuh informasi lebih lanjut?
-                  </h3>
-
-                  <p className="mt-1 max-w-xl text-sm leading-6 text-emerald-50">
-                    Lihat persyaratan dan informasi pelayanan
-                    sebelum berkunjung ke Puskesmas.
-                  </p>
-                </div>
-              </div>
-
-              <Link
-                href="/persyaratan"
-                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-emerald-700 transition hover:bg-emerald-50"
-              >
-                Lihat Persyaratan
-                <ArrowRight size={16} />
-              </Link>
-            </div>
+            <p className="mt-2 text-sm text-slate-600">
+              Periksa dokumen dan persyaratan pelayanan terlebih dahulu.
+            </p>
           </div>
+
+          <Link
+            href="/persyaratan"
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-800"
+          >
+            Lihat Persyaratan
+            <ArrowRight size={17} />
+          </Link>
         </div>
       </section>
 
-      {/* =====================================================
-          MODAL DETAIL
-      ===================================================== */}
+      {/* FOOTER */}
+      <footer className="bg-white">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+          <div>
+            <p className="font-bold text-slate-800">
+              PUSKESMAS TARAILU SAMPAGA
+            </p>
+            <p className="mt-1">
+              Portal Informasi Pelayanan Kesehatan Masyarakat.
+            </p>
+          </div>
+
+          <div>© 2026 Puskesmas Tarailu Sampaga</div>
+        </div>
+      </footer>
+
+      {/* DETAIL MODAL */}
       {selectedCluster && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 px-4 py-6 backdrop-blur-sm"
           onClick={() => setSelectedCluster(null)}
         >
           <div
-            className="relative max-h-[90vh] w-full max-w-lg overflow-hidden rounded-[2rem] bg-white shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
+            className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl bg-white shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal header */}
-            <div className="bg-emerald-600 px-6 pb-7 pt-6 text-white">
+            {/* MODAL HEADER */}
+            <div className="border-b border-slate-100 px-6 pb-6 pt-7 sm:px-8">
               <button
-                type="button"
                 onClick={() => setSelectedCluster(null)}
-                className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 transition hover:bg-white/20"
+                className="mb-7 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-emerald-700"
               >
-                <X size={18} />
+                <ArrowLeft size={16} />
+                Kembali
               </button>
 
-              <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15">
-                  {(() => {
-                    const Icon = selectedCluster.icon;
-                    return <Icon size={28} />;
-                  })()}
+              <div className="flex items-start gap-4">
+                <div
+                  className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${selectedCluster.accent}`}
+                >
+                  <selectedCluster.icon size={26} />
                 </div>
 
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-emerald-100">
-                    {selectedCluster.subtitle}
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">
+                    {selectedCluster.title}
                   </p>
 
-                  <h3 className="mt-1 text-2xl font-bold">
-                    {selectedCluster.title}
-                  </h3>
+                  <h2 className="mt-1 text-2xl font-bold text-slate-900 sm:text-3xl">
+                    {selectedCluster.subtitle}
+                  </h2>
                 </div>
               </div>
-            </div>
 
-            {/* Modal body */}
-            <div className="max-h-[55vh] overflow-y-auto px-6 py-6">
-              <p className="text-sm leading-6 text-slate-500">
+              <p className="mt-5 max-w-2xl text-sm leading-6 text-slate-600">
                 {selectedCluster.description}
               </p>
+            </div>
 
-              <div className="mt-6">
-                <p className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">
-                  Layanan yang tersedia
+            {/* SERVICES */}
+            <div className="px-6 py-7 sm:px-8">
+              <div className="mb-5">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">
+                  LAYANAN DALAM KLASTER
                 </p>
 
-                <div className="space-y-3">
-                  {selectedCluster.services.map(
-                    (service, index) => {
-                      const Icon =
-                        iconList[index % iconList.length];
+                <h3 className="mt-1 text-xl font-bold text-slate-900">
+                  Pilihan pelayanan
+                </h3>
+              </div>
 
-                      return (
-                        <div
-                          key={service}
-                          className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4"
-                        >
-                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-emerald-600 shadow-sm">
-                            <Icon size={19} />
-                          </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {selectedCluster.services.map((service, index) => (
+                  <div
+                    key={service.title}
+                    className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:border-emerald-200 hover:bg-emerald-50/50"
+                  >
+                    <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-xl bg-white text-sm font-bold text-emerald-700 shadow-sm">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
 
-                          <div className="flex-1">
-                            <p className="text-sm font-semibold text-slate-700">
-                              {service}
-                            </p>
-                          </div>
+                    <h4 className="font-bold leading-6 text-slate-900">
+                      {service.title}
+                    </h4>
 
-                          <ChevronRight
-                            size={17}
-                            className="text-slate-300"
-                          />
-                        </div>
-                      );
-                    }
-                  )}
-                </div>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                      {service.description}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Modal footer */}
-            <div className="border-t border-slate-100 bg-white px-6 py-4">
-              <button
-                type="button"
-                onClick={() => setSelectedCluster(null)}
-                className="w-full rounded-xl bg-slate-100 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-200"
-              >
-                Tutup
-              </button>
+            {/* MODAL FOOTER */}
+            <div className="border-t border-slate-100 bg-slate-50 px-6 py-5 sm:px-8">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-sm text-slate-500">
+                  Informasi pelayanan dapat berubah sesuai kebijakan
+                  Puskesmas.
+                </p>
+
+                <Link
+                  href="/persyaratan"
+                  onClick={() => setSelectedCluster(null)}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-emerald-700 hover:text-emerald-800"
+                >
+                  Lihat persyaratan
+                  <ChevronRight size={17} />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
