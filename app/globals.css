@@ -1822,3 +1822,354 @@ footer {
     align-items: flex-start;
   }
 }
+
+/* =========================================================
+   HERO VISUAL - HOMEPAGE
+   ========================================================= */
+
+.heroVisual {
+  position: relative;
+
+  min-height: 430px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visualGlow {
+  position: absolute;
+
+  width: 390px;
+  height: 390px;
+
+  border-radius: 50%;
+
+  background: #e2f3ed;
+
+  filter: blur(2px);
+}
+
+.healthCard {
+  position: relative;
+  z-index: 2;
+
+  width: min(420px, 100%);
+
+  padding: 27px;
+
+  border: 1px solid #dce9e4;
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 25px 60px rgba(20, 65, 52, 0.10),
+    0 5px 18px rgba(20, 65, 52, 0.05);
+}
+
+.healthCardTop {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.healthIcon {
+  width: 52px;
+  height: 52px;
+
+  border-radius: 15px;
+
+  background: #e7f5f0;
+  color: #128565;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.healthCardTop span {
+  color: #128565;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.healthIllustration {
+  position: relative;
+
+  height: 220px;
+  margin: 18px 0;
+
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #ffffff 0%,
+      #edf8f4 48%,
+      #e2f3ed 100%
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.circlePulse {
+  width: 125px;
+  height: 125px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+  color: #128565;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 0 0 18px rgba(18, 133, 101, 0.06),
+    0 12px 30px rgba(18, 133, 101, 0.10);
+}
+
+.cross {
+  position: absolute;
+
+  color: #8bc9b6;
+
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.crossOne {
+  top: 30px;
+  left: 60px;
+}
+
+.crossTwo {
+  right: 65px;
+  bottom: 30px;
+}
+
+.healthCardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.healthCardBottom small {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #8a9692;
+
+  font-size: 11px;
+}
+
+.healthCardBottom strong {
+  color: #17211f;
+
+  font-size: 15px;
+}
+
+.openBadge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 8px 11px;
+
+  border-radius: 999px;
+
+  background: #e8f6f1;
+  color: #128565;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.openBadge span {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #20a77d;
+}
+
+
+/* =========================================================
+   HERO NOTE
+   ========================================================= */
+
+.heroNote {
+  margin-top: 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #7a8581;
+
+  font-size: 12px;
+}
+
+.noteDot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #20a77d;
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
+
+.secondary {
+  display: inline-flex;
+  align-items: center;
+
+  color: #128565;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.secondary:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   QUICK INFORMATION
+   ========================================================= */
+
+.quickInfo {
+  width: min(1180px, 88%);
+  margin: 0 auto 20px;
+
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  border: 1px solid #dfe8e4;
+  border-radius: 22px;
+
+  background: #ffffff;
+
+  overflow: hidden;
+}
+
+.quickItem {
+  min-height: 110px;
+
+  padding: 23px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+}
+
+.quickItem + .quickItem {
+  border-left: 1px solid #e6ece9;
+}
+
+.quickIcon {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  background: #e7f5f0;
+  color: #128565;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quickItem strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #17211f;
+
+  font-size: 14px;
+}
+
+.quickItem span {
+  display: block;
+
+  color: #77837f;
+
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   HERO RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .heroVisual {
+    min-height: 380px;
+  }
+
+  .quickInfo {
+    grid-template-columns: 1fr;
+  }
+
+  .quickItem + .quickItem {
+    border-left: 0;
+    border-top: 1px solid #e6ece9;
+  }
+}
+
+@media (max-width: 700px) {
+  .heroVisual {
+    min-height: 340px;
+  }
+
+  .visualGlow {
+    width: 300px;
+    height: 300px;
+  }
+
+  .healthCard {
+    padding: 20px;
+    border-radius: 23px;
+  }
+
+  .healthIllustration {
+    height: 180px;
+  }
+
+  .circlePulse {
+    width: 100px;
+    height: 100px;
+  }
+
+  .quickInfo {
+    width: 90%;
+  }
+}
